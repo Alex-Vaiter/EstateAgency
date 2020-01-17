@@ -13,3 +13,6 @@ D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Deb
 D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Debug\EstateAgency.csproj.CopyComplete
 D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Debug\EstateAgency.exe
 D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Debug\EstateAgency.pdb
+D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormAgents.resources
+D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormClients.resources
+D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormMessage.resources

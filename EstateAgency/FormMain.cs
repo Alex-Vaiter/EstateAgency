@@ -19,12 +19,16 @@ namespace EstateAgency
 
         private void buttonClients_Click(object sender, EventArgs e)
         {
-
+            FormClients form = new FormClients();
+            form.Show();
+            Hide();
         }
 
         private void buttonAgents_Click(object sender, EventArgs e)
         {
-
+            FormAgents form = new FormAgents();
+            form.Show();
+            Hide();
         }
     }
 }

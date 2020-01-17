@@ -10,7 +10,7 @@ namespace EstateAgency.Models
     public partial class Client
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int idClient { get; set; }
 
         [StringLength(80)]

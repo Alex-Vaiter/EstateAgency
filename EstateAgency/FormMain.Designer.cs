@@ -28,11 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonClients = new System.Windows.Forms.Button();
             this.buttonAgents = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // buttonClients
+            // 
+            this.buttonClients.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.buttonClients.Font = new System.Drawing.Font("Roboto", 16F);
+            this.buttonClients.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.buttonClients.Location = new System.Drawing.Point(12, 115);
+            this.buttonClients.Name = "buttonClients";
+            this.buttonClients.Size = new System.Drawing.Size(130, 36);
+            this.buttonClients.TabIndex = 1;
+            this.buttonClients.Text = "Клиенты";
+            this.buttonClients.UseVisualStyleBackColor = false;
+            this.buttonClients.Click += new System.EventHandler(this.buttonClients_Click);
+            // 
+            // buttonAgents
+            // 
+            this.buttonAgents.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.buttonAgents.Font = new System.Drawing.Font("Roboto", 16F);
+            this.buttonAgents.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.buttonAgents.Location = new System.Drawing.Point(163, 115);
+            this.buttonAgents.Name = "buttonAgents";
+            this.buttonAgents.Size = new System.Drawing.Size(101, 36);
+            this.buttonAgents.TabIndex = 2;
+            this.buttonAgents.Text = "Агенты";
+            this.buttonAgents.UseVisualStyleBackColor = false;
+            this.buttonAgents.Click += new System.EventHandler(this.buttonAgents_Click);
             // 
             // pictureBox1
             // 
@@ -45,34 +71,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // buttonClients
-            // 
-            this.buttonClients.AutoSize = true;
-            this.buttonClients.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.buttonClients.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonClients.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.buttonClients.Location = new System.Drawing.Point(12, 115);
-            this.buttonClients.Name = "buttonClients";
-            this.buttonClients.Size = new System.Drawing.Size(160, 48);
-            this.buttonClients.TabIndex = 1;
-            this.buttonClients.Text = "Клиенты";
-            this.buttonClients.UseVisualStyleBackColor = false;
-            this.buttonClients.Click += new System.EventHandler(this.buttonClients_Click);
-            // 
-            // buttonAgents
-            // 
-            this.buttonAgents.AutoSize = true;
-            this.buttonAgents.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.buttonAgents.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonAgents.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.buttonAgents.Location = new System.Drawing.Point(178, 115);
-            this.buttonAgents.Name = "buttonAgents";
-            this.buttonAgents.Size = new System.Drawing.Size(137, 48);
-            this.buttonAgents.TabIndex = 2;
-            this.buttonAgents.Text = "Агенты";
-            this.buttonAgents.UseVisualStyleBackColor = false;
-            this.buttonAgents.Click += new System.EventHandler(this.buttonAgents_Click);
             // 
             // FormMain
             // 

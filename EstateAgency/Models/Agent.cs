@@ -10,7 +10,7 @@ namespace EstateAgency.Models
     public partial class Agent
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int idAgent { get; set; }
 
         [Required]
