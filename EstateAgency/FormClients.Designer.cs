@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewClients = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxFirstN = new System.Windows.Forms.TextBox();
@@ -67,14 +67,14 @@
             this.dataGridViewClients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewClients.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewClients.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewClients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewClients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewClients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnId,
@@ -83,25 +83,25 @@
             this.ColumnMiddleName,
             this.ColumnPhoneNum,
             this.ColumnEmail});
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewClients.DefaultCellStyle = dataGridViewCellStyle29;
-            this.dataGridViewClients.Location = new System.Drawing.Point(12, 128);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewClients.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewClients.Location = new System.Drawing.Point(12, 103);
             this.dataGridViewClients.Name = "dataGridViewClients";
             this.dataGridViewClients.ReadOnly = true;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewClients.RowHeadersDefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewClients.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewClients.RowHeadersVisible = false;
             this.dataGridViewClients.Size = new System.Drawing.Size(960, 294);
             this.dataGridViewClients.TabIndex = 0;
@@ -121,7 +121,7 @@
             // 
             this.textBoxFirstN.Font = new System.Drawing.Font("Roboto", 14F);
             this.textBoxFirstN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.textBoxFirstN.Location = new System.Drawing.Point(12, 533);
+            this.textBoxFirstN.Location = new System.Drawing.Point(13, 499);
             this.textBoxFirstN.Name = "textBoxFirstN";
             this.textBoxFirstN.Size = new System.Drawing.Size(183, 30);
             this.textBoxFirstN.TabIndex = 1;
@@ -132,7 +132,7 @@
             this.buttonChange.Enabled = false;
             this.buttonChange.Font = new System.Drawing.Font("Roboto", 16F);
             this.buttonChange.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.buttonChange.Location = new System.Drawing.Point(515, 529);
+            this.buttonChange.Location = new System.Drawing.Point(516, 495);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(130, 34);
             this.buttonChange.TabIndex = 7;
@@ -145,7 +145,7 @@
             this.buttonAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.buttonAdd.Font = new System.Drawing.Font("Roboto", 16F);
             this.buttonAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.buttonAdd.Location = new System.Drawing.Point(515, 461);
+            this.buttonAdd.Location = new System.Drawing.Point(516, 427);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(130, 34);
             this.buttonAdd.TabIndex = 6;
@@ -157,7 +157,7 @@
             // 
             this.textBoxMiddleN.Font = new System.Drawing.Font("Roboto", 14F);
             this.textBoxMiddleN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.textBoxMiddleN.Location = new System.Drawing.Point(12, 608);
+            this.textBoxMiddleN.Location = new System.Drawing.Point(13, 568);
             this.textBoxMiddleN.Name = "textBoxMiddleN";
             this.textBoxMiddleN.Size = new System.Drawing.Size(183, 30);
             this.textBoxMiddleN.TabIndex = 2;
@@ -166,7 +166,7 @@
             // 
             this.textBoxLastN.Font = new System.Drawing.Font("Roboto", 14F);
             this.textBoxLastN.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.textBoxLastN.Location = new System.Drawing.Point(12, 465);
+            this.textBoxLastN.Location = new System.Drawing.Point(13, 431);
             this.textBoxLastN.Name = "textBoxLastN";
             this.textBoxLastN.Size = new System.Drawing.Size(183, 30);
             this.textBoxLastN.TabIndex = 3;
@@ -175,7 +175,7 @@
             // 
             this.textBoxPhone.Font = new System.Drawing.Font("Roboto", 14F);
             this.textBoxPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.textBoxPhone.Location = new System.Drawing.Point(262, 465);
+            this.textBoxPhone.Location = new System.Drawing.Point(263, 431);
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.Size = new System.Drawing.Size(183, 30);
             this.textBoxPhone.TabIndex = 5;
@@ -184,7 +184,7 @@
             // 
             this.textBoxMail.Font = new System.Drawing.Font("Roboto", 14F);
             this.textBoxMail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.textBoxMail.Location = new System.Drawing.Point(262, 533);
+            this.textBoxMail.Location = new System.Drawing.Point(263, 499);
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.Size = new System.Drawing.Size(183, 30);
             this.textBoxMail.TabIndex = 4;
@@ -193,7 +193,7 @@
             // 
             this.label2.Font = new System.Drawing.Font("Roboto", 14F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.label2.Location = new System.Drawing.Point(8, 437);
+            this.label2.Location = new System.Drawing.Point(9, 403);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(128, 24);
             this.label2.TabIndex = 12;
@@ -203,7 +203,7 @@
             // 
             this.label3.Font = new System.Drawing.Font("Roboto", 14F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.label3.Location = new System.Drawing.Point(8, 506);
+            this.label3.Location = new System.Drawing.Point(9, 472);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(128, 24);
             this.label3.TabIndex = 13;
@@ -213,7 +213,7 @@
             // 
             this.label4.Font = new System.Drawing.Font("Roboto", 14F);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.label4.Location = new System.Drawing.Point(8, 575);
+            this.label4.Location = new System.Drawing.Point(9, 541);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(128, 24);
             this.label4.TabIndex = 14;
@@ -223,7 +223,7 @@
             // 
             this.label5.Font = new System.Drawing.Font("Roboto", 14F);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.label5.Location = new System.Drawing.Point(258, 438);
+            this.label5.Location = new System.Drawing.Point(259, 404);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(167, 24);
             this.label5.TabIndex = 15;
@@ -233,7 +233,7 @@
             // 
             this.label6.Font = new System.Drawing.Font("Roboto", 14F);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.label6.Location = new System.Drawing.Point(258, 506);
+            this.label6.Location = new System.Drawing.Point(259, 472);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(187, 24);
             this.label6.TabIndex = 16;
@@ -245,7 +245,7 @@
             this.buttonDel.Enabled = false;
             this.buttonDel.Font = new System.Drawing.Font("Roboto", 16F);
             this.buttonDel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.buttonDel.Location = new System.Drawing.Point(515, 598);
+            this.buttonDel.Location = new System.Drawing.Point(516, 564);
             this.buttonDel.Name = "buttonDel";
             this.buttonDel.Size = new System.Drawing.Size(130, 34);
             this.buttonDel.TabIndex = 8;
@@ -258,7 +258,7 @@
             this.buttonBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.buttonBack.Font = new System.Drawing.Font("Roboto", 16F);
             this.buttonBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.buttonBack.Location = new System.Drawing.Point(842, 604);
+            this.buttonBack.Location = new System.Drawing.Point(842, 564);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(130, 34);
             this.buttonBack.TabIndex = 9;
@@ -320,7 +320,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(984, 650);
+            this.ClientSize = new System.Drawing.Size(984, 611);
             this.Controls.Add(this.buttonDel);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);

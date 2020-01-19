@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище EstateAgencyDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Agent">
+    <Key>
+      <PropertyRef Name="idAgent" />
+    </Key>
+    <Property Name="idAgent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstName" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="middleName" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="lastName" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="dealShare" Type="int" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="idClient" />
+    </Key>
+    <Property Name="idClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstName" Type="nvarchar" MaxLength="80" />
+    <Property Name="middleName" Type="nvarchar" MaxLength="80" />
+    <Property Name="lastName" Type="nvarchar" MaxLength="80" />
+    <Property Name="phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="email" Type="nvarchar" MaxLength="80" />
+  </EntityType>
+  <EntityType Name="Sentence">
+    <Key>
+      <PropertyRef Name="idSentence" />
+    </Key>
+    <Property Name="idSentence" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idClient" Type="int" Nullable="false" />
+    <Property Name="idAgent" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Sentence_Agent">
+    <End Role="Agent" Type="Self.Agent" Multiplicity="1" />
+    <End Role="Sentence" Type="Self.Sentence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agent">
+        <PropertyRef Name="idAgent" />
+      </Principal>
+      <Dependent Role="Sentence">
+        <PropertyRef Name="idAgent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sentence_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Sentence" Type="Self.Sentence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="idClient" />
+      </Principal>
+      <Dependent Role="Sentence">
+        <PropertyRef Name="idClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище EstateAgencyDBModelContainer">
+    <EntitySet Name="Agent" EntityType="Self.Agent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sentence" EntityType="Self.Sentence" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Sentence_Agent" Association="Self.FK_Sentence_Agent">
+      <End Role="Agent" EntitySet="Agent" />
+      <End Role="Sentence" EntitySet="Sentence" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sentence_Client" Association="Self.FK_Sentence_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Sentence" EntitySet="Sentence" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

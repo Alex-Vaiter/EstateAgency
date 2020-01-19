@@ -8,6 +8,6 @@ namespace EstateAgency.Models
 {
     class ClassGetContext
     {
-        public static EstateModel context = new EstateModel();
+        public static EstateAgencyDB context = new EstateAgencyDB();
     }
 }

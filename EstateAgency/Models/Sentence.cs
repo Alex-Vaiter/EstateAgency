@@ -12,22 +12,13 @@ namespace EstateAgency.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Client
+    public partial class Sentence
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Client()
-        {
-            this.Sentences = new HashSet<Sentence>();
-        }
-    
+        public int idSentence { get; set; }
         public int idClient { get; set; }
-        public string firstName { get; set; }
-        public string middleName { get; set; }
-        public string lastName { get; set; }
-        public string phone { get; set; }
-        public string email { get; set; }
+        public int idAgent { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sentence> Sentences { get; set; }
+        public virtual Agent Agent { get; set; }
+        public virtual Client Client { get; set; }
     }
 }

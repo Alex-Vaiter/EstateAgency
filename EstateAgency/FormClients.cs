@@ -28,6 +28,7 @@ namespace EstateAgency
         private void FormClients_Load(object sender, EventArgs e)
         {
             FillTable();
+            dataGridViewClients.Columns.Add(new DataGridViewColumn { HeaderText = "Hat", CellTemplate = new DataGridViewTextBoxCell() });
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
@@ -39,11 +40,24 @@ namespace EstateAgency
 
         private void buttonDel_Click(object sender, EventArgs e)
         {
-            var del = ClassGetContext.context.Clients.Where(x => x.idClient == currClient.idClient).FirstOrDefault();
-            ClassGetContext.context.Clients.Remove(del);
-            ClassGetContext.context.SaveChanges();
+            var ctx = ClassGetContext.context;
+            var isLock = (from client in ctx.Clients
+                          join sentence in ctx.Sentences on client.idClient equals sentence.idClient
+                          select client);
 
-            FillTable();
+            if (isLock.Any())
+            {
+                FormMessage form = new FormMessage("Данный клиент не может быть удален, так как участвует в Предложении");
+                form.ShowDialog();
+            }
+            else
+            {
+                var del = ctx.Clients.Where(x => x.idClient == currClient.idClient).FirstOrDefault();
+                ctx.Clients.Remove(del);
+                ctx.SaveChanges();
+
+                FillTable();
+            }
             HidingTracks();
         }
 
@@ -97,8 +111,8 @@ namespace EstateAgency
         {
             var row = dataGridViewClients.CurrentRow;
             currClient.idClient = Convert.ToInt32(row.Cells[0].Value);
-            textBoxFirstN.Text = row.Cells[3].Value.ToString();
-            textBoxMiddleN.Text = row.Cells[2].Value.ToString();
+            textBoxFirstN.Text = row.Cells[2].Value.ToString();
+            textBoxMiddleN.Text = row.Cells[3].Value.ToString();
             textBoxLastN.Text = row.Cells[1].Value.ToString();
             textBoxPhone.Text = row.Cells[4].Value.ToString();
             textBoxMail.Text = row.Cells[5].Value.ToString();
