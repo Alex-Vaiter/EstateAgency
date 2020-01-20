@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EstateAgency.Models;
+using EstateAgency.BaseLogic;
 
 namespace EstateAgency
 {
@@ -37,7 +38,7 @@ namespace EstateAgency
             }
             else
             {
-                FormMessage form = new FormMessage("Проверьте введенные данные");
+                FormMessage form = new FormMessage("Проверьте введенные данные", ClassChangePic.error);
                 form.ShowDialog();
             }
         }
@@ -59,7 +60,7 @@ namespace EstateAgency
             }
             else
             {
-                FormMessage form = new FormMessage("Проверьте введенные данные");
+                FormMessage form = new FormMessage("Проверьте введенные данные", ClassChangePic.error);
                 form.ShowDialog();
             }
         }
@@ -69,11 +70,12 @@ namespace EstateAgency
             var ctx = ClassGetContext.context;
             var isLock = (from agent in ctx.Agents
                           join sentence in ctx.Sentences on agent.idAgent equals sentence.idAgent
+                          where agent.idAgent == currAgent.idAgent
                           select agent);
 
             if (isLock.Any())
             {
-                FormMessage form = new FormMessage("Данный агент не может быть удален, так как участвует в Предложении");
+                FormMessage form = new FormMessage("Данный агент не может быть удален, так как участвует в Предложении", ClassChangePic.error);
                 form.ShowDialog();
             }
             else

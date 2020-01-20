@@ -16,3 +16,7 @@ D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Deb
 D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormAgents.resources
 D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormClients.resources
 D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormMessage.resources
+D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\bin\Debug\Fizzler.dll
+D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\bin\Debug\Svg.dll
+D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\bin\Debug\Svg.xml
+D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
