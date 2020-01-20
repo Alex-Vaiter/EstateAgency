@@ -21,6 +21,23 @@
     <Property Name="phone" Type="nvarchar" MaxLength="20" />
     <Property Name="email" Type="nvarchar" MaxLength="80" />
   </EntityType>
+  <EntityType Name="EstateObject">
+    <Key>
+      <PropertyRef Name="IdEstate" />
+    </Key>
+    <Property Name="IdEstate" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="city" Type="nvarchar" MaxLength="200" />
+    <Property Name="street" Type="nvarchar" MaxLength="200" />
+    <Property Name="house" Type="nvarchar" MaxLength="50" />
+    <Property Name="addressNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="latitude" Type="decimal" Precision="20" Scale="15" />
+    <Property Name="longitude" Type="decimal" Precision="20" Scale="15" />
+    <Property Name="totalFloors" Type="int" />
+    <Property Name="totalArea" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="rooms" Type="int" />
+    <Property Name="floor" Type="int" />
+    <Property Name="typeEstate" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="Sentence">
     <Key>
       <PropertyRef Name="idSentence" />
@@ -28,6 +45,7 @@
     <Property Name="idSentence" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idClient" Type="int" Nullable="false" />
     <Property Name="idAgent" Type="int" Nullable="false" />
+    <Property Name="idEstate" Type="int" />
   </EntityType>
   <Association Name="FK_Sentence_Agent">
     <End Role="Agent" Type="Self.Agent" Multiplicity="1" />
@@ -53,9 +71,22 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Sentence_EstateObject">
+    <End Role="EstateObject" Type="Self.EstateObject" Multiplicity="0..1" />
+    <End Role="Sentence" Type="Self.Sentence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstateObject">
+        <PropertyRef Name="IdEstate" />
+      </Principal>
+      <Dependent Role="Sentence">
+        <PropertyRef Name="idEstate" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="Хранилище EstateAgencyDBModelContainer">
     <EntitySet Name="Agent" EntityType="Self.Agent" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstateObject" EntityType="Self.EstateObject" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sentence" EntityType="Self.Sentence" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Sentence_Agent" Association="Self.FK_Sentence_Agent">
       <End Role="Agent" EntitySet="Agent" />
@@ -63,6 +94,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_Sentence_Client" Association="Self.FK_Sentence_Client">
       <End Role="Client" EntitySet="Client" />
+      <End Role="Sentence" EntitySet="Sentence" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sentence_EstateObject" Association="Self.FK_Sentence_EstateObject">
+      <End Role="EstateObject" EntitySet="EstateObject" />
       <End Role="Sentence" EntitySet="Sentence" />
     </AssociationSet>
   </EntityContainer>

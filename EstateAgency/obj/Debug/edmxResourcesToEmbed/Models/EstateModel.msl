@@ -27,9 +27,28 @@
     <EntitySetMapping Name="Sentences">
       <EntityTypeMapping TypeName="EstateAgencyDBModel.Sentence">
         <MappingFragment StoreEntitySet="Sentence">
+          <ScalarProperty Name="idEstate" ColumnName="idEstate" />
           <ScalarProperty Name="idAgent" ColumnName="idAgent" />
           <ScalarProperty Name="idClient" ColumnName="idClient" />
           <ScalarProperty Name="idSentence" ColumnName="idSentence" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstateObjects">
+      <EntityTypeMapping TypeName="EstateAgencyDBModel.EstateObject">
+        <MappingFragment StoreEntitySet="EstateObject">
+          <ScalarProperty Name="typeEstate" ColumnName="typeEstate" />
+          <ScalarProperty Name="floor" ColumnName="floor" />
+          <ScalarProperty Name="rooms" ColumnName="rooms" />
+          <ScalarProperty Name="totalArea" ColumnName="totalArea" />
+          <ScalarProperty Name="totalFloors" ColumnName="totalFloors" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="addressNumber" ColumnName="addressNumber" />
+          <ScalarProperty Name="house" ColumnName="house" />
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="idEstate" ColumnName="IdEstate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EstateAgency.BaseLogic
 {
-    public enum ClassChangePic
+    public enum ChangePic
     {
         warning,
         error,

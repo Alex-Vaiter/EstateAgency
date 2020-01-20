@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using EstateAgency.BaseLogic;
 using EstateAgency.Models;
-using EstateAgency.BaseLogic;
+using System;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace EstateAgency
 {
@@ -38,7 +33,7 @@ namespace EstateAgency
             }
             else
             {
-                FormMessage form = new FormMessage("Проверьте введенные данные", ClassChangePic.error);
+                FormMessage form = new FormMessage("Проверьте введенные данные", ChangePic.warning);
                 form.ShowDialog();
             }
         }
@@ -60,7 +55,7 @@ namespace EstateAgency
             }
             else
             {
-                FormMessage form = new FormMessage("Проверьте введенные данные", ClassChangePic.error);
+                FormMessage form = new FormMessage("Проверьте введенные данные", ChangePic.warning);
                 form.ShowDialog();
             }
         }
@@ -75,7 +70,7 @@ namespace EstateAgency
 
             if (isLock.Any())
             {
-                FormMessage form = new FormMessage("Данный агент не может быть удален, так как участвует в Предложении", ClassChangePic.error);
+                FormMessage form = new FormMessage("Данный агент не может быть удален, так как участвует в Предложении", ChangePic.error);
                 form.ShowDialog();
             }
             else
@@ -138,7 +133,7 @@ namespace EstateAgency
 
         private bool AllValid()
         {
-            if(!string.IsNullOrWhiteSpace(textBoxFirstN.Text) && !string.IsNullOrWhiteSpace(textBoxMiddleN.Text) 
+            if (!string.IsNullOrWhiteSpace(textBoxFirstN.Text) && !string.IsNullOrWhiteSpace(textBoxMiddleN.Text)
                 && !string.IsNullOrWhiteSpace(textBoxLastN.Text))
             {
                 return true;

@@ -10,6 +10,8 @@
         <EntityTypeShape EntityType="EstateAgencyDBModel.Sentence" Width="1.5" PointX="5" PointY="1" />
         <AssociationConnector Association="EstateAgencyDBModel.FK_Sentence_Agent" />
         <AssociationConnector Association="EstateAgencyDBModel.FK_Sentence_Client" />
+        <EntityTypeShape EntityType="EstateAgencyDBModel.EstateObject" Width="1.5" PointX="8.125" PointY="0.875" />
+        <AssociationConnector Association="EstateAgencyDBModel.FK_Sentence_EstateObject" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

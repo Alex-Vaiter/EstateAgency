@@ -29,7 +29,6 @@ namespace EstateAgency
         private void FormClients_Load(object sender, EventArgs e)
         {
             FillTable();
-            dataGridViewClients.Columns.Add(new DataGridViewColumn { HeaderText = "Hat", CellTemplate = new DataGridViewTextBoxCell() });
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
@@ -49,7 +48,7 @@ namespace EstateAgency
             
             if (isLock.Any())
             {
-                FormMessage form = new FormMessage("Данный клиент не может быть удален, так как участвует в Предложении", ClassChangePic.error);
+                FormMessage form = new FormMessage("Данный клиент не может быть удален, так как участвует в Предложении", ChangePic.error);
                 form.ShowDialog();
             }
             else
@@ -81,7 +80,7 @@ namespace EstateAgency
             }
             else
             {
-                FormMessage form = new FormMessage("Проверьте введенные данные", ClassChangePic.error);
+                FormMessage form = new FormMessage("Проверьте введенные данные", ChangePic.warning);
                 form.ShowDialog();
             }
 
@@ -100,7 +99,7 @@ namespace EstateAgency
 
                 ClassGetContext.context.SaveChanges();
 
-                FormMessage form = new FormMessage("Изменения применены успешно", ClassChangePic.success);
+                FormMessage form = new FormMessage("Изменения применены успешно", ChangePic.success);
                 form.ShowDialog();
 
                 FillTable();
@@ -108,7 +107,7 @@ namespace EstateAgency
             }
             else
             {
-                FormMessage form = new FormMessage("Проверьте введенные данные", ClassChangePic.error);
+                FormMessage form = new FormMessage("Проверьте введенные данные", ChangePic.warning);
                 form.ShowDialog();
             }
         }

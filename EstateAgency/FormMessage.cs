@@ -14,8 +14,8 @@ namespace EstateAgency
 {
     public partial class FormMessage : Form
     {
-        private ClassChangePic Pic;
-        public FormMessage(string message, ClassChangePic pic)
+        private ChangePic Pic;
+        public FormMessage(string message, ChangePic pic)
         {
             InitializeComponent();
             labelMessage.Text = message;
@@ -33,8 +33,8 @@ namespace EstateAgency
             string path = "";
             switch (Pic)
             {
-                case ClassChangePic.warning: path = "pics/warning.svg";break;
-                case ClassChangePic.error: path = "pics/danger.svg";break;
+                case ChangePic.warning: path = "pics/warning.svg";break;
+                case ChangePic.error: path = "pics/danger.svg";break;
                 default: path = "pics/success.svg";break;
             }
 

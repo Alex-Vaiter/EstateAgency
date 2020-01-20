@@ -35,6 +35,11 @@
       <End Role="Client" EntitySet="Clients" />
       <End Role="Sentence" EntitySet="Sentences" />
     </AssociationSet>
+    <EntitySet Name="EstateObjects" EntityType="EstateAgencyDBModel.EstateObject" />
+    <AssociationSet Name="FK_Sentence_EstateObject" Association="EstateAgencyDBModel.FK_Sentence_EstateObject">
+      <End Role="EstateObject" EntitySet="EstateObjects" />
+      <End Role="Sentence" EntitySet="Sentences" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Sentence">
     <Key>
@@ -45,6 +50,8 @@
     <Property Name="idAgent" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Agent" Relationship="EstateAgencyDBModel.FK_Sentence_Agent" FromRole="Sentence" ToRole="Agent" />
     <NavigationProperty Name="Client" Relationship="EstateAgencyDBModel.FK_Sentence_Client" FromRole="Sentence" ToRole="Client" />
+    <Property Name="idEstate" Type="Int32" />
+    <NavigationProperty Name="EstateObject" Relationship="EstateAgencyDBModel.FK_Sentence_EstateObject" FromRole="Sentence" ToRole="EstateObject" />
   </EntityType>
   <Association Name="FK_Sentence_Agent">
     <End Type="EstateAgencyDBModel.Agent" Role="Agent" Multiplicity="1" />
@@ -67,6 +74,36 @@
       </Principal>
       <Dependent Role="Sentence">
         <PropertyRef Name="idClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="EstateObject">
+    <Key>
+      <PropertyRef Name="idEstate" />
+    </Key>
+    <Property Name="idEstate" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="city" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="street" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="house" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="addressNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="latitude" Type="Decimal" Precision="20" Scale="15" />
+    <Property Name="longitude" Type="Decimal" Precision="20" Scale="15" />
+    <Property Name="totalFloors" Type="Int32" />
+    <Property Name="totalArea" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="rooms" Type="Int32" />
+    <Property Name="floor" Type="Int32" />
+    <Property Name="typeEstate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Sentences" Relationship="EstateAgencyDBModel.FK_Sentence_EstateObject" FromRole="EstateObject" ToRole="Sentence" />
+  </EntityType>
+  <Association Name="FK_Sentence_EstateObject">
+    <End Type="EstateAgencyDBModel.EstateObject" Role="EstateObject" Multiplicity="0..1" />
+    <End Type="EstateAgencyDBModel.Sentence" Role="Sentence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstateObject">
+        <PropertyRef Name="idEstate" />
+      </Principal>
+      <Dependent Role="Sentence">
+        <PropertyRef Name="idEstate" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

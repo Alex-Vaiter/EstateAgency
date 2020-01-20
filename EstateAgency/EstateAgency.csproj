@@ -62,7 +62,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseLogic\ClassChangePic.cs" />
+    <Compile Include="BaseLogic\ChangePic.cs" />
+    <Compile Include="BaseLogic\Levenchtein.cs" />
     <Compile Include="FormAgents.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +75,12 @@
     </Compile>
     <Compile Include="FormClients.Designer.cs">
       <DependentUpon>FormClients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEstateObject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEstateObject.Designer.cs">
+      <DependentUpon>FormEstateObject.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -109,6 +116,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EstateModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EstateObject.cs">
+      <DependentUpon>EstateModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Sentence.cs">
       <DependentUpon>EstateModel.tt</DependentUpon>
     </Compile>
@@ -119,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormClients.resx">
       <DependentUpon>FormClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEstateObject.resx">
+      <DependentUpon>FormEstateObject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
