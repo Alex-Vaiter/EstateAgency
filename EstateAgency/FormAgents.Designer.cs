@@ -311,6 +311,7 @@
             this.Name = "FormAgents";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAgents";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAgents_FormClosing);
             this.Load += new System.EventHandler(this.FormAgents_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAgents)).EndInit();

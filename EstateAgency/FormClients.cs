@@ -28,8 +28,6 @@ namespace EstateAgency
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            FormMain form = new FormMain();
-            form.Show();
             Close();
         }
 

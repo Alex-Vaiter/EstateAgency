@@ -4,33 +4,23 @@
     <EntitySetMapping Name="Agents">
       <EntityTypeMapping TypeName="EstateAgencyDBModel.Agent">
         <MappingFragment StoreEntitySet="Agent">
-          <ScalarProperty Name="idAgent" ColumnName="idAgent" />
-          <ScalarProperty Name="firstName" ColumnName="firstName" />
-          <ScalarProperty Name="middleName" ColumnName="middleName" />
-          <ScalarProperty Name="lastName" ColumnName="lastName" />
           <ScalarProperty Name="dealShare" ColumnName="dealShare" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="middleName" ColumnName="middleName" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="idAgent" ColumnName="idAgent" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Clients">
       <EntityTypeMapping TypeName="EstateAgencyDBModel.Client">
         <MappingFragment StoreEntitySet="Client">
-          <ScalarProperty Name="idClient" ColumnName="idClient" />
-          <ScalarProperty Name="firstName" ColumnName="firstName" />
-          <ScalarProperty Name="middleName" ColumnName="middleName" />
-          <ScalarProperty Name="lastName" ColumnName="lastName" />
-          <ScalarProperty Name="phone" ColumnName="phone" />
           <ScalarProperty Name="email" ColumnName="email" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Sentences">
-      <EntityTypeMapping TypeName="EstateAgencyDBModel.Sentence">
-        <MappingFragment StoreEntitySet="Sentence">
-          <ScalarProperty Name="idEstate" ColumnName="idEstate" />
-          <ScalarProperty Name="idAgent" ColumnName="idAgent" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="middleName" ColumnName="middleName" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
           <ScalarProperty Name="idClient" ColumnName="idClient" />
-          <ScalarProperty Name="idSentence" ColumnName="idSentence" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -49,6 +39,17 @@
           <ScalarProperty Name="street" ColumnName="street" />
           <ScalarProperty Name="city" ColumnName="city" />
           <ScalarProperty Name="idEstate" ColumnName="IdEstate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sentences">
+      <EntityTypeMapping TypeName="EstateAgencyDBModel.Sentence">
+        <MappingFragment StoreEntitySet="Sentence">
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="idEstate" ColumnName="idEstate" />
+          <ScalarProperty Name="idAgent" ColumnName="idAgent" />
+          <ScalarProperty Name="idClient" ColumnName="idClient" />
+          <ScalarProperty Name="idSentence" ColumnName="idSentence" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

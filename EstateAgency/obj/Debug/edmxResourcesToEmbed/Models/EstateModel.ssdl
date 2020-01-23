@@ -33,7 +33,7 @@
     <Property Name="latitude" Type="decimal" Precision="20" Scale="15" />
     <Property Name="longitude" Type="decimal" Precision="20" Scale="15" />
     <Property Name="totalFloors" Type="int" />
-    <Property Name="totalArea" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="totalArea" Type="decimal" Precision="18" Scale="3" />
     <Property Name="rooms" Type="int" />
     <Property Name="floor" Type="int" />
     <Property Name="typeEstate" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -45,7 +45,8 @@
     <Property Name="idSentence" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idClient" Type="int" Nullable="false" />
     <Property Name="idAgent" Type="int" Nullable="false" />
-    <Property Name="idEstate" Type="int" />
+    <Property Name="idEstate" Type="int" Nullable="false" />
+    <Property Name="price" Type="decimal" Precision="20" Scale="2" Nullable="false" />
   </EntityType>
   <Association Name="FK_Sentence_Agent">
     <End Role="Agent" Type="Self.Agent" Multiplicity="1" />
@@ -72,7 +73,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Sentence_EstateObject">
-    <End Role="EstateObject" Type="Self.EstateObject" Multiplicity="0..1" />
+    <End Role="EstateObject" Type="Self.EstateObject" Multiplicity="1" />
     <End Role="Sentence" Type="Self.Sentence" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="EstateObject">

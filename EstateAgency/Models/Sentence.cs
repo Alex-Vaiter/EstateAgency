@@ -17,7 +17,8 @@ namespace EstateAgency.Models
         public int idSentence { get; set; }
         public int idClient { get; set; }
         public int idAgent { get; set; }
-        public Nullable<int> idEstate { get; set; }
+        public int idEstate { get; set; }
+        public decimal price { get; set; }
     
         public virtual Agent Agent { get; set; }
         public virtual Client Client { get; set; }

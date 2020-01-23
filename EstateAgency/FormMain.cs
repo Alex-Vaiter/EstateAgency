@@ -37,5 +37,12 @@ namespace EstateAgency
             form.Show();
             Hide();
         }
+
+        private void buttonSentence_Click(object sender, EventArgs e)
+        {
+            FormSentence form = new FormSentence();
+            form.Show();
+            Hide();
+        }
     }
 }

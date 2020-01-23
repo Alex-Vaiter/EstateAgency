@@ -21,3 +21,4 @@ D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\bin\Deb
 D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\bin\Debug\Svg.xml
 D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
 D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormEstateObject.resources
+D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormSentence.resources

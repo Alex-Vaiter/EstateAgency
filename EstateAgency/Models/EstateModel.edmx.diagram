@@ -5,12 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="62adf33907e1408284a9b9ba1e45e8b6" Name="Diagram1">
-        <EntityTypeShape EntityType="EstateAgencyDBModel.Agent" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EstateAgencyDBModel.Client" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EstateAgencyDBModel.Sentence" Width="1.5" PointX="5" PointY="1" />
+        <EntityTypeShape EntityType="EstateAgencyDBModel.Agent" Width="1.5" PointX="0.75" PointY="5.125" />
+        <EntityTypeShape EntityType="EstateAgencyDBModel.Client" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="EstateAgencyDBModel.EstateObject" Width="1.5" PointX="0.75" PointY="8.125" />
+        <EntityTypeShape EntityType="EstateAgencyDBModel.Sentence" Width="1.5" PointX="3" PointY="1" />
         <AssociationConnector Association="EstateAgencyDBModel.FK_Sentence_Agent" />
         <AssociationConnector Association="EstateAgencyDBModel.FK_Sentence_Client" />
-        <EntityTypeShape EntityType="EstateAgencyDBModel.EstateObject" Width="1.5" PointX="8.125" PointY="0.875" />
         <AssociationConnector Association="EstateAgencyDBModel.FK_Sentence_EstateObject" />
       </Diagram>
     </edmx:Diagrams>

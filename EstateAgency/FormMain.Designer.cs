@@ -32,6 +32,7 @@
             this.buttonAgents = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonEstate = new System.Windows.Forms.Button();
+            this.buttonSentence = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,12 +87,26 @@
             this.buttonEstate.UseVisualStyleBackColor = false;
             this.buttonEstate.Click += new System.EventHandler(this.buttonEstate_Click);
             // 
+            // buttonSentence
+            // 
+            this.buttonSentence.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.buttonSentence.Font = new System.Drawing.Font("Roboto", 16F);
+            this.buttonSentence.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.buttonSentence.Location = new System.Drawing.Point(475, 115);
+            this.buttonSentence.Name = "buttonSentence";
+            this.buttonSentence.Size = new System.Drawing.Size(184, 36);
+            this.buttonSentence.TabIndex = 4;
+            this.buttonSentence.Text = "Предложения";
+            this.buttonSentence.UseVisualStyleBackColor = false;
+            this.buttonSentence.Click += new System.EventHandler(this.buttonSentence_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(984, 611);
+            this.Controls.Add(this.buttonSentence);
             this.Controls.Add(this.buttonEstate);
             this.Controls.Add(this.buttonAgents);
             this.Controls.Add(this.buttonClients);
@@ -113,6 +128,7 @@
         private System.Windows.Forms.Button buttonClients;
         private System.Windows.Forms.Button buttonAgents;
         private System.Windows.Forms.Button buttonEstate;
+        private System.Windows.Forms.Button buttonSentence;
     }
 }
 

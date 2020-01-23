@@ -100,8 +100,6 @@ namespace EstateAgency
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            FormMain form = new FormMain();
-            form.Show();
             Close();
         }
 
@@ -140,6 +138,12 @@ namespace EstateAgency
             }
 
             return false;
+        }
+
+        private void FormAgents_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FormMain form = new FormMain();
+            form.Show();
         }
     }
 }
