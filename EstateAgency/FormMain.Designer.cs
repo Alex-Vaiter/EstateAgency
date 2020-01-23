@@ -31,7 +31,7 @@
             this.buttonClients = new System.Windows.Forms.Button();
             this.buttonAgents = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonEstate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,17 +73,18 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // buttonEstate
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button1.Font = new System.Drawing.Font("Roboto", 16F);
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.button1.Location = new System.Drawing.Point(285, 115);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(184, 36);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Недвижимость";
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonEstate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.buttonEstate.Font = new System.Drawing.Font("Roboto", 16F);
+            this.buttonEstate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.buttonEstate.Location = new System.Drawing.Point(285, 115);
+            this.buttonEstate.Name = "buttonEstate";
+            this.buttonEstate.Size = new System.Drawing.Size(184, 36);
+            this.buttonEstate.TabIndex = 3;
+            this.buttonEstate.Text = "Недвижимость";
+            this.buttonEstate.UseVisualStyleBackColor = false;
+            this.buttonEstate.Click += new System.EventHandler(this.buttonEstate_Click);
             // 
             // FormMain
             // 
@@ -91,7 +92,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(984, 611);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonEstate);
             this.Controls.Add(this.buttonAgents);
             this.Controls.Add(this.buttonClients);
             this.Controls.Add(this.pictureBox1);
@@ -111,7 +112,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button buttonClients;
         private System.Windows.Forms.Button buttonAgents;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonEstate;
     }
 }
 
