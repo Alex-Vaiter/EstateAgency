@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EstateAgency.Models;
+using EstateAgency.BaseLogic;
 
 namespace EstateAgency
 {
@@ -33,11 +34,12 @@ namespace EstateAgency
             FillComboBox();
 
             comboBoxEstateType.SelectedIndex = 0;
-            BoxesVision(false, false, false, false, false, false, false, false, false);
+            BoxesVision(false, false, false, false, false, false, false, false, false, false);
         }
 
-        private void FillTable(IQueryable<EstateObject> collections)
+        private void FillTable(List<EstateObject> collections)
         {
+            dataGridViewEstates.Rows.Clear();
             foreach(EstateObject estate in collections)
             {
                 dataGridViewEstates.Rows.Add(estate.idEstate, estate.city, estate.street, estate.house, estate.addressNumber,
@@ -79,7 +81,7 @@ namespace EstateAgency
                 }
             }
 
-            FillTable(output);
+            FillTable(output.ToList());
         }
 
         private void comboBoxCity_SelectedIndexChanged(object sender, EventArgs e)
@@ -99,7 +101,7 @@ namespace EstateAgency
                 colCity = false;
             }
 
-            FillTable(output);
+            FillTable(output.ToList());
             ColumnVision(city: colCity);
         }
 
@@ -184,6 +186,31 @@ namespace EstateAgency
         private void buttonDel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            var result = (from estate in ClassGetContext.context.EstateObjects select estate).ToList();
+
+            result = result.Where(est => 
+                            Levenchtein.Length(est.city, textBoxCitySearch.Text) <= 3 && 
+                            Levenchtein.Length(est.street, textBoxStreetSearch.Text) <= 3 &&
+                            Levenchtein.Length(est.house, textBoxHouseSearch.Text) <= 1 &&
+                            Levenchtein.Length(est.addressNumber, numApartSearch.Value.ToString()) <= 1)
+                           .Select(es => es)
+                           .ToList();
+
+            FillTable(result);
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            textBoxCitySearch.Clear();
+            textBoxStreetSearch.Clear();
+            textBoxHouseSearch.Clear();
+            numApartSearch.Value = 0;
+
+            FillTable(ClassGetContext.context.EstateObjects.ToList());
         }
     }
 }

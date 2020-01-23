@@ -8,10 +8,7 @@ namespace EstateAgency.BaseLogic
         /// Возвращает расстояние Левенштейна между двумя словами. 
         /// Порядок слов не важен.
         /// </summary>
-        /// <param name="string1"></param>
-        /// <param name="string2"></param>
-        /// <returns></returns>
-        static int Length(string word1, string word2)
+        public static int Length(string word1, string word2)
         {
             if (word1.Length == 0 && word2.Length == 0)
             {

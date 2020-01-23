@@ -76,16 +76,17 @@
             this.numTotalRooms = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxCitySearch = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxStreetSearch = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.textBoxHouseSearch = new System.Windows.Forms.TextBox();
+            this.buttonSearch = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numArea = new System.Windows.Forms.NumericUpDown();
+            this.numApartSearch = new System.Windows.Forms.NumericUpDown();
+            this.buttonClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEstates)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLatit)).BeginInit();
@@ -94,6 +95,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numTotalRooms)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numArea)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numApartSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonDel
@@ -592,14 +594,14 @@
             this.label14.TabIndex = 51;
             this.label14.Text = "Город";
             // 
-            // textBox2
+            // textBoxCitySearch
             // 
-            this.textBox2.Font = new System.Drawing.Font("Roboto", 10F);
-            this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.textBox2.Location = new System.Drawing.Point(16, 44);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(163, 24);
-            this.textBox2.TabIndex = 50;
+            this.textBoxCitySearch.Font = new System.Drawing.Font("Roboto", 10F);
+            this.textBoxCitySearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.textBoxCitySearch.Location = new System.Drawing.Point(16, 44);
+            this.textBoxCitySearch.Name = "textBoxCitySearch";
+            this.textBoxCitySearch.Size = new System.Drawing.Size(163, 24);
+            this.textBoxCitySearch.TabIndex = 50;
             // 
             // label15
             // 
@@ -611,14 +613,14 @@
             this.label15.TabIndex = 53;
             this.label15.Text = "Улица";
             // 
-            // textBox3
+            // textBoxStreetSearch
             // 
-            this.textBox3.Font = new System.Drawing.Font("Roboto", 10F);
-            this.textBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.textBox3.Location = new System.Drawing.Point(16, 105);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(163, 24);
-            this.textBox3.TabIndex = 52;
+            this.textBoxStreetSearch.Font = new System.Drawing.Font("Roboto", 10F);
+            this.textBoxStreetSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.textBoxStreetSearch.Location = new System.Drawing.Point(16, 105);
+            this.textBoxStreetSearch.Name = "textBoxStreetSearch";
+            this.textBoxStreetSearch.Size = new System.Drawing.Size(163, 24);
+            this.textBoxStreetSearch.TabIndex = 52;
             // 
             // label16
             // 
@@ -640,46 +642,39 @@
             this.label17.TabIndex = 56;
             this.label17.Text = "Дом";
             // 
-            // textBox4
+            // textBoxHouseSearch
             // 
-            this.textBox4.Font = new System.Drawing.Font("Roboto", 10F);
-            this.textBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.textBox4.Location = new System.Drawing.Point(196, 105);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(140, 24);
-            this.textBox4.TabIndex = 55;
+            this.textBoxHouseSearch.Font = new System.Drawing.Font("Roboto", 10F);
+            this.textBoxHouseSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.textBoxHouseSearch.Location = new System.Drawing.Point(197, 44);
+            this.textBoxHouseSearch.Name = "textBoxHouseSearch";
+            this.textBoxHouseSearch.Size = new System.Drawing.Size(139, 24);
+            this.textBoxHouseSearch.TabIndex = 54;
             // 
-            // textBox5
+            // buttonSearch
             // 
-            this.textBox5.Font = new System.Drawing.Font("Roboto", 10F);
-            this.textBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.textBox5.Location = new System.Drawing.Point(197, 44);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(139, 24);
-            this.textBox5.TabIndex = 54;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.button1.Font = new System.Drawing.Font("Roboto", 10F);
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.button1.Location = new System.Drawing.Point(109, 140);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 23);
-            this.button1.TabIndex = 58;
-            this.button1.Text = "Создать";
-            this.button1.UseVisualStyleBackColor = false;
+            this.buttonSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.buttonSearch.Font = new System.Drawing.Font("Roboto", 10F);
+            this.buttonSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.buttonSearch.Location = new System.Drawing.Point(49, 139);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(130, 23);
+            this.buttonSearch.TabIndex = 58;
+            this.buttonSearch.Text = "Поиск";
+            this.buttonSearch.UseVisualStyleBackColor = false;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.buttonClear);
+            this.groupBox1.Controls.Add(this.numApartSearch);
+            this.groupBox1.Controls.Add(this.textBoxHouseSearch);
+            this.groupBox1.Controls.Add(this.buttonSearch);
+            this.groupBox1.Controls.Add(this.textBoxCitySearch);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.textBoxStreetSearch);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Font = new System.Drawing.Font("Roboto", 10.25F);
             this.groupBox1.Location = new System.Drawing.Point(861, 365);
@@ -702,6 +697,26 @@
             this.numArea.Name = "numArea";
             this.numArea.Size = new System.Drawing.Size(92, 30);
             this.numArea.TabIndex = 60;
+            // 
+            // numApartSearch
+            // 
+            this.numApartSearch.Location = new System.Drawing.Point(197, 105);
+            this.numApartSearch.Name = "numApartSearch";
+            this.numApartSearch.Size = new System.Drawing.Size(139, 24);
+            this.numApartSearch.TabIndex = 59;
+            // 
+            // buttonClear
+            // 
+            this.buttonClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.buttonClear.Font = new System.Drawing.Font("Roboto", 10F);
+            this.buttonClear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.buttonClear.Location = new System.Drawing.Point(197, 139);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(130, 23);
+            this.buttonClear.TabIndex = 60;
+            this.buttonClear.Text = "Сброс";
+            this.buttonClear.UseVisualStyleBackColor = false;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // FormEstateObject
             // 
@@ -758,6 +773,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numArea)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numApartSearch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -810,15 +826,16 @@
         private System.Windows.Forms.NumericUpDown numTotalRooms;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxCitySearch;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxStreetSearch;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBoxHouseSearch;
+        private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.NumericUpDown numArea;
+        private System.Windows.Forms.NumericUpDown numApartSearch;
+        private System.Windows.Forms.Button buttonClear;
     }
 }
