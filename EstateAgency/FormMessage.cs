@@ -1,14 +1,7 @@
-﻿using Svg;
+﻿using EstateAgency.BaseLogic;
+using Svg;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using EstateAgency.BaseLogic;
 
 namespace EstateAgency
 {
@@ -20,7 +13,6 @@ namespace EstateAgency
             InitializeComponent();
             labelMessage.Text = message;
             Pic = pic;
-            
         }
 
         private void pictureBoxExit_Click(object sender, EventArgs e)
@@ -33,12 +25,12 @@ namespace EstateAgency
             string path = "";
             switch (Pic)
             {
-                case ChangePic.warning: path = "pics/warning.svg";break;
-                case ChangePic.error: path = "pics/danger.svg";break;
-                default: path = "pics/success.svg";break;
+                case ChangePic.warning: path = "pics/warning.svg"; break;
+                case ChangePic.error: path = "pics/danger.svg"; break;
+                default: path = "pics/success.svg"; break;
             }
 
-            if(string.IsNullOrEmpty(path))
+            if (string.IsNullOrEmpty(path))
             {
                 return;
             }

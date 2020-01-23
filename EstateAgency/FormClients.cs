@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using EstateAgency.BaseLogic;
 using EstateAgency.Models;
-using EstateAgency.BaseLogic;
+using System;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace EstateAgency
 {
@@ -45,7 +40,7 @@ namespace EstateAgency
                           join sentence in ctx.Sentences on client.idClient equals sentence.idClient
                           where client.idClient == currClient.idClient
                           select client);
-            
+
             if (isLock.Any())
             {
                 FormMessage form = new FormMessage("Данный клиент не может быть удален, так как участвует в Предложении", ChangePic.error);
@@ -145,7 +140,7 @@ namespace EstateAgency
             buttonChange.Enabled = false;
             buttonDel.Enabled = false;
         }
-        
+
         private bool AllValid()
         {
             if (!string.IsNullOrWhiteSpace(textBoxPhone.Text) || textBoxMail.Text.Contains("@"))
