@@ -94,6 +94,12 @@
     <Compile Include="FormMessage.Designer.cs">
       <DependentUpon>FormMessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSentence.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSentence.Designer.cs">
+      <DependentUpon>FormSentence.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Agent.cs">
       <DependentUpon>EstateModel.tt</DependentUpon>
     </Compile>
@@ -138,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMessage.resx">
       <DependentUpon>FormMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSentence.resx">
+      <DependentUpon>FormSentence.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
