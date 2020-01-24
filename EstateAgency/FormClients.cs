@@ -33,75 +33,98 @@ namespace EstateAgency
 
         private void buttonDel_Click(object sender, EventArgs e)
         {
-            var ctx = ClassGetContext.context;
-            var isLock = (from client in ctx.Clients
-                          join sentence in ctx.Sentences on client.idClient equals sentence.idClient
-                          where client.idClient == currClient.idClient
-                          select client);
-
-            if (isLock.Any())
+            try
             {
-                FormMessage form = new FormMessage("Данный клиент не может быть удален, так как участвует в Предложении", ChangePic.error);
-                form.ShowDialog();
-            }
-            else
-            {
-                var del = ctx.Clients.Where(x => x.idClient == currClient.idClient).FirstOrDefault();
-                ctx.Clients.Remove(del);
-                ctx.SaveChanges();
+                var ctx = ClassGetContext.context;
+                var isLock = (from client in ctx.Clients
+                              join sentence in ctx.Sentences on client.idClient equals sentence.idClient
+                              where client.idClient == currClient.idClient
+                              select client);
 
-                FillTable();
+                if (isLock.Any())
+                {
+                    using (var form = new FormMessage("Данный клиент не может быть удален, так как участвует в Предложении", ChangePic.error))
+                        form.ShowDialog();
+                }
+                else
+                {
+                    var del = ctx.Clients.Where(x => x.idClient == currClient.idClient).FirstOrDefault();
+                    ctx.Clients.Remove(del);
+                    ctx.SaveChanges();
+
+                    FillTable();
+                }
+                HidingTracks();
             }
-            HidingTracks();
+            catch
+            {
+                using (var form = new FormMessage("При подключении к базе данных во время удаления произошли ошибки", ChangePic.error))
+                    form.ShowDialog();
+            }
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (AllValid())
+            try
             {
-                currClient.firstName = textBoxFirstN.Text;
-                currClient.middleName = textBoxMiddleN.Text;
-                currClient.lastName = textBoxLastN.Text;
-                currClient.email = textBoxMail.Text;
-                currClient.phone = textBoxPhone.Text;
+                if (AllValid())
+                {
+                    currClient.firstName = textBoxFirstN.Text;
+                    currClient.middleName = textBoxMiddleN.Text;
+                    currClient.lastName = textBoxLastN.Text;
+                    currClient.email = textBoxMail.Text;
+                    currClient.phone = textBoxPhone.Text;
 
-                ClassGetContext.context.Clients.Add(currClient);
-                ClassGetContext.context.SaveChanges();
+                    ClassGetContext.context.Clients.Add(currClient);
+                    ClassGetContext.context.SaveChanges();
 
-                FillTable();
-                HidingTracks();
+                    FillTable();
+                    HidingTracks();
+                }
+                else
+                {
+                    using (var form = new FormMessage("Проверьте введенные данные", ChangePic.warning))
+                        form.ShowDialog();
+                }
             }
-            else
+            catch
             {
-                FormMessage form = new FormMessage("Проверьте введенные данные", ChangePic.warning);
-                form.ShowDialog();
+                using (var form = new FormMessage("При подключении к базе данных во время добавления произошли ошибки", ChangePic.warning))
+                    form.ShowDialog();
             }
-
         }
 
         private void buttonChange_Click(object sender, EventArgs e)
         {
-            if (AllValid())
+            try
             {
-                var middleClient = ClassGetContext.context.Clients.Where(x => x.idClient == currClient.idClient).FirstOrDefault();
-                middleClient.firstName = textBoxFirstN.Text;
-                middleClient.middleName = textBoxMiddleN.Text;
-                middleClient.lastName = textBoxLastN.Text;
-                middleClient.email = textBoxMail.Text;
-                middleClient.phone = textBoxPhone.Text;
+                if (AllValid())
+                {
+                    var middleClient = ClassGetContext.context.Clients.Where(x => x.idClient == currClient.idClient).FirstOrDefault();
+                    middleClient.firstName = textBoxFirstN.Text;
+                    middleClient.middleName = textBoxMiddleN.Text;
+                    middleClient.lastName = textBoxLastN.Text;
+                    middleClient.email = textBoxMail.Text;
+                    middleClient.phone = textBoxPhone.Text;
 
-                ClassGetContext.context.SaveChanges();
+                    ClassGetContext.context.SaveChanges();
 
-                FormMessage form = new FormMessage("Изменения применены успешно", ChangePic.success);
-                form.ShowDialog();
+                    FormMessage form = new FormMessage("Изменения применены успешно", ChangePic.success);
+                    form.ShowDialog();
 
-                FillTable();
-                HidingTracks();
+                    FillTable();
+                    HidingTracks();
+                }
+                else
+                {
+                    using (var form = new FormMessage("Проверьте введенные данные", ChangePic.warning))
+                        form.ShowDialog();
+                }
             }
-            else
+            catch
             {
-                FormMessage form = new FormMessage("Проверьте введенные данные", ChangePic.warning);
-                form.ShowDialog();
+                using (var form = new FormMessage("При подключении к базе данных во время изменения произошли ошибки", ChangePic.warning))
+                    form.ShowDialog();
             }
         }
         private void dataGridViewClients_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -119,11 +142,19 @@ namespace EstateAgency
 
         private void FillTable()
         {
-            dataGridViewClients.Rows.Clear();
-
-            foreach (Client item in ClassGetContext.context.Clients)
+            try
             {
-                dataGridViewClients.Rows.Add(item.idClient, item.lastName, item.firstName, item.middleName, item.phone, item.email);
+                dataGridViewClients.Rows.Clear();
+
+                foreach (Client item in ClassGetContext.context.Clients)
+                {
+                    dataGridViewClients.Rows.Add(item.idClient, item.lastName, item.firstName, item.middleName, item.phone, item.email);
+                }
+            }
+            catch
+            {
+                using (var form = new FormMessage("При заполнении списка клиентов произошли ошибки", ChangePic.error))
+                    form.ShowDialog();
             }
         }
 

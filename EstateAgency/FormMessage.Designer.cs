@@ -39,6 +39,7 @@
             // 
             // labelMessage
             // 
+            this.labelMessage.Font = new System.Drawing.Font("Roboto", 10.25F);
             this.labelMessage.Location = new System.Drawing.Point(122, 7);
             this.labelMessage.Name = "labelMessage";
             this.labelMessage.Size = new System.Drawing.Size(203, 80);

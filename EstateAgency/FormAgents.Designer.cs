@@ -45,12 +45,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridViewAgents = new System.Windows.Forms.DataGridView();
+            this.numDealShare = new System.Windows.Forms.NumericUpDown();
             this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnMiddleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnShare = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numDealShare = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAgents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDealShare)).BeginInit();
@@ -247,6 +247,14 @@
             this.dataGridViewAgents.TabIndex = 17;
             this.dataGridViewAgents.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClients_CellClick);
             // 
+            // numDealShare
+            // 
+            this.numDealShare.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.numDealShare.Location = new System.Drawing.Point(262, 426);
+            this.numDealShare.Name = "numDealShare";
+            this.numDealShare.Size = new System.Drawing.Size(183, 30);
+            this.numDealShare.TabIndex = 4;
+            // 
             // ColumnId
             // 
             this.ColumnId.HeaderText = "id";
@@ -277,14 +285,6 @@
             this.ColumnShare.HeaderText = "Доля от комиссии";
             this.ColumnShare.Name = "ColumnShare";
             this.ColumnShare.ReadOnly = true;
-            // 
-            // numDealShare
-            // 
-            this.numDealShare.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numDealShare.Location = new System.Drawing.Point(262, 426);
-            this.numDealShare.Name = "numDealShare";
-            this.numDealShare.Size = new System.Drawing.Size(183, 30);
-            this.numDealShare.TabIndex = 4;
             // 
             // FormAgents
             // 
@@ -336,11 +336,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dataGridViewAgents;
+        private System.Windows.Forms.NumericUpDown numDealShare;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnMiddleName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnShare;
-        private System.Windows.Forms.NumericUpDown numDealShare;
     }
 }

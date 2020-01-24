@@ -28,10 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridViewSentences = new System.Windows.Forms.DataGridView();
+            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnClientId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAgentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnEstateId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnEstateCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnEstateType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label12 = new System.Windows.Forms.Label();
             this.comboBoxClient = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,15 +54,6 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonChange = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnClientId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAgentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnEstateId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnEstateCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnEstateType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSentences)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPrice)).BeginInit();
@@ -90,30 +90,93 @@
             this.ColumnEstateCity,
             this.ColumnEstateType,
             this.ColumnPrice});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewSentences.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewSentences.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewSentences.Location = new System.Drawing.Point(12, 113);
             this.dataGridViewSentences.MultiSelect = false;
             this.dataGridViewSentences.Name = "dataGridViewSentences";
             this.dataGridViewSentences.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSentences.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSentences.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewSentences.RowHeadersVisible = false;
             this.dataGridViewSentences.Size = new System.Drawing.Size(1016, 199);
             this.dataGridViewSentences.TabIndex = 3;
             this.dataGridViewSentences.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSentences_CellClick);
+            // 
+            // ColumnId
+            // 
+            this.ColumnId.HeaderText = "id";
+            this.ColumnId.Name = "ColumnId";
+            this.ColumnId.ReadOnly = true;
+            this.ColumnId.Visible = false;
+            this.ColumnId.Width = 10;
+            // 
+            // ColumnClientId
+            // 
+            this.ColumnClientId.HeaderText = "ColumnClientId";
+            this.ColumnClientId.Name = "ColumnClientId";
+            this.ColumnClientId.ReadOnly = true;
+            this.ColumnClientId.Visible = false;
+            // 
+            // ColumnClient
+            // 
+            this.ColumnClient.HeaderText = "Клиент";
+            this.ColumnClient.Name = "ColumnClient";
+            this.ColumnClient.ReadOnly = true;
+            this.ColumnClient.Width = 227;
+            // 
+            // ColumnAgentId
+            // 
+            this.ColumnAgentId.HeaderText = "ColumnAgentId";
+            this.ColumnAgentId.Name = "ColumnAgentId";
+            this.ColumnAgentId.ReadOnly = true;
+            this.ColumnAgentId.Visible = false;
+            // 
+            // ColumnAgent
+            // 
+            this.ColumnAgent.HeaderText = "Риелтор";
+            this.ColumnAgent.Name = "ColumnAgent";
+            this.ColumnAgent.ReadOnly = true;
+            this.ColumnAgent.Width = 226;
+            // 
+            // ColumnEstateId
+            // 
+            this.ColumnEstateId.HeaderText = "ColumnEstateId";
+            this.ColumnEstateId.Name = "ColumnEstateId";
+            this.ColumnEstateId.ReadOnly = true;
+            this.ColumnEstateId.Visible = false;
+            // 
+            // ColumnEstateCity
+            // 
+            this.ColumnEstateCity.HeaderText = "Объект недвижимости";
+            this.ColumnEstateCity.Name = "ColumnEstateCity";
+            this.ColumnEstateCity.ReadOnly = true;
+            this.ColumnEstateCity.Width = 350;
+            // 
+            // ColumnEstateType
+            // 
+            this.ColumnEstateType.HeaderText = "Тип недвижимости";
+            this.ColumnEstateType.Name = "ColumnEstateType";
+            this.ColumnEstateType.ReadOnly = true;
+            this.ColumnEstateType.Width = 110;
+            // 
+            // ColumnPrice
+            // 
+            this.ColumnPrice.HeaderText = "Цена";
+            this.ColumnPrice.Name = "ColumnPrice";
+            this.ColumnPrice.ReadOnly = true;
             // 
             // label12
             // 
@@ -223,6 +286,7 @@
             this.buttonDel.TabIndex = 65;
             this.buttonDel.Text = "Удалить";
             this.buttonDel.UseVisualStyleBackColor = false;
+            this.buttonDel.Click += new System.EventHandler(this.buttonDel_Click);
             // 
             // buttonBack
             // 
@@ -248,6 +312,7 @@
             this.buttonAdd.TabIndex = 63;
             this.buttonAdd.Text = "Создать";
             this.buttonAdd.UseVisualStyleBackColor = false;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonChange
             // 
@@ -261,6 +326,7 @@
             this.buttonChange.TabIndex = 64;
             this.buttonChange.Text = "Изменить";
             this.buttonChange.UseVisualStyleBackColor = false;
+            this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
             // 
             // label3
             // 
@@ -271,69 +337,6 @@
             this.label3.Size = new System.Drawing.Size(210, 36);
             this.label3.TabIndex = 67;
             this.label3.Text = "Предложение";
-            // 
-            // ColumnId
-            // 
-            this.ColumnId.HeaderText = "id";
-            this.ColumnId.Name = "ColumnId";
-            this.ColumnId.ReadOnly = true;
-            this.ColumnId.Visible = false;
-            this.ColumnId.Width = 10;
-            // 
-            // ColumnClientId
-            // 
-            this.ColumnClientId.HeaderText = "ColumnClientId";
-            this.ColumnClientId.Name = "ColumnClientId";
-            this.ColumnClientId.ReadOnly = true;
-            this.ColumnClientId.Visible = false;
-            // 
-            // ColumnClient
-            // 
-            this.ColumnClient.HeaderText = "Клиент";
-            this.ColumnClient.Name = "ColumnClient";
-            this.ColumnClient.ReadOnly = true;
-            this.ColumnClient.Width = 227;
-            // 
-            // ColumnAgentId
-            // 
-            this.ColumnAgentId.HeaderText = "ColumnAgentId";
-            this.ColumnAgentId.Name = "ColumnAgentId";
-            this.ColumnAgentId.ReadOnly = true;
-            this.ColumnAgentId.Visible = false;
-            // 
-            // ColumnAgent
-            // 
-            this.ColumnAgent.HeaderText = "Риелтор";
-            this.ColumnAgent.Name = "ColumnAgent";
-            this.ColumnAgent.ReadOnly = true;
-            this.ColumnAgent.Width = 226;
-            // 
-            // ColumnEstateId
-            // 
-            this.ColumnEstateId.HeaderText = "ColumnEstateId";
-            this.ColumnEstateId.Name = "ColumnEstateId";
-            this.ColumnEstateId.ReadOnly = true;
-            this.ColumnEstateId.Visible = false;
-            // 
-            // ColumnEstateCity
-            // 
-            this.ColumnEstateCity.HeaderText = "Объект недвижимости";
-            this.ColumnEstateCity.Name = "ColumnEstateCity";
-            this.ColumnEstateCity.ReadOnly = true;
-            this.ColumnEstateCity.Width = 350;
-            // 
-            // ColumnEstateType
-            // 
-            this.ColumnEstateType.HeaderText = "Тип недвижимости";
-            this.ColumnEstateType.Name = "ColumnEstateType";
-            this.ColumnEstateType.ReadOnly = true;
-            this.ColumnEstateType.Width = 110;
-            // 
-            // ColumnPrice
-            // 
-            this.ColumnPrice.HeaderText = "Цена";
-            this.ColumnPrice.Name = "ColumnPrice";
-            this.ColumnPrice.ReadOnly = true;
             // 
             // FormSentence
             // 

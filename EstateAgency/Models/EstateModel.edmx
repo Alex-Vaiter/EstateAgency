@@ -26,6 +26,13 @@
           <Property Name="phone" Type="nvarchar" MaxLength="20" />
           <Property Name="email" Type="nvarchar" MaxLength="80" />
         </EntityType>
+        <EntityType Name="Deal">
+          <Key>
+            <PropertyRef Name="idDeal" />
+          </Key>
+          <Property Name="idDeal" Type="int" Nullable="false" />
+          <Property Name="idSentence" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="EstateObject">
           <Key>
             <PropertyRef Name="IdEstate" />
@@ -53,6 +60,18 @@
           <Property Name="idEstate" Type="int" Nullable="false" />
           <Property Name="price" Type="decimal" Precision="20" Scale="2" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Deal_Sentence">
+          <End Role="Sentence" Type="Self.Sentence" Multiplicity="1" />
+          <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sentence">
+              <PropertyRef Name="idSentence" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="idSentence" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Sentence_Agent">
           <End Role="Agent" Type="Self.Agent" Multiplicity="1" />
           <End Role="Sentence" Type="Self.Sentence" Multiplicity="*" />
@@ -92,8 +111,13 @@
         <EntityContainer Name="Хранилище EstateAgencyDBModelContainer">
           <EntitySet Name="Agent" EntityType="Self.Agent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deal" EntityType="Self.Deal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EstateObject" EntityType="Self.EstateObject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sentence" EntityType="Self.Sentence" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Deal_Sentence" Association="Self.FK_Deal_Sentence">
+            <End Role="Sentence" EntitySet="Sentence" />
+            <End Role="Deal" EntitySet="Deal" />
+          </AssociationSet>
           <AssociationSet Name="FK_Sentence_Agent" Association="Self.FK_Sentence_Agent">
             <End Role="Agent" EntitySet="Agent" />
             <End Role="Sentence" EntitySet="Sentence" />
@@ -127,6 +151,11 @@
           <AssociationSet Name="FK_Sentence_EstateObject" Association="EstateAgencyDBModel.FK_Sentence_EstateObject">
             <End Role="EstateObject" EntitySet="EstateObjects" />
             <End Role="Sentence" EntitySet="Sentences" />
+          </AssociationSet>
+          <EntitySet Name="Deals" EntityType="EstateAgencyDBModel.Deal" />
+          <AssociationSet Name="FK_Deal_Sentence" Association="EstateAgencyDBModel.FK_Deal_Sentence">
+            <End Role="Sentence" EntitySet="Sentences" />
+            <End Role="Deal" EntitySet="Deals" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Agent">
@@ -182,6 +211,7 @@
           <NavigationProperty Name="Agent" Relationship="EstateAgencyDBModel.FK_Sentence_Agent" FromRole="Sentence" ToRole="Agent" />
           <NavigationProperty Name="Client" Relationship="EstateAgencyDBModel.FK_Sentence_Client" FromRole="Sentence" ToRole="Client" />
           <NavigationProperty Name="EstateObject" Relationship="EstateAgencyDBModel.FK_Sentence_EstateObject" FromRole="Sentence" ToRole="EstateObject" />
+          <NavigationProperty Name="Deals" Relationship="EstateAgencyDBModel.FK_Deal_Sentence" FromRole="Sentence" ToRole="Deal" />
         </EntityType>
         <Association Name="FK_Sentence_Agent">
           <End Type="EstateAgencyDBModel.Agent" Role="Agent" Multiplicity="1" />
@@ -216,6 +246,26 @@
             </Principal>
             <Dependent Role="Sentence">
               <PropertyRef Name="idEstate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Deal">
+          <Key>
+            <PropertyRef Name="idDeal" />
+          </Key>
+          <Property Name="idDeal" Type="Int32" Nullable="false" />
+          <Property Name="idSentence" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sentence" Relationship="EstateAgencyDBModel.FK_Deal_Sentence" FromRole="Deal" ToRole="Sentence" />
+        </EntityType>
+        <Association Name="FK_Deal_Sentence">
+          <End Type="EstateAgencyDBModel.Sentence" Role="Sentence" Multiplicity="1" />
+          <End Type="EstateAgencyDBModel.Deal" Role="Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sentence">
+              <PropertyRef Name="idSentence" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="idSentence" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -274,6 +324,14 @@
                 <ScalarProperty Name="idAgent" ColumnName="idAgent" />
                 <ScalarProperty Name="idClient" ColumnName="idClient" />
                 <ScalarProperty Name="idSentence" ColumnName="idSentence" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deals">
+            <EntityTypeMapping TypeName="EstateAgencyDBModel.Deal">
+              <MappingFragment StoreEntitySet="Deal">
+                <ScalarProperty Name="idSentence" ColumnName="idSentence" />
+                <ScalarProperty Name="idDeal" ColumnName="idDeal" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

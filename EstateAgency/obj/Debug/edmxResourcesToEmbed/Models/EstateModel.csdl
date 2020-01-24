@@ -17,6 +17,11 @@
       <End Role="EstateObject" EntitySet="EstateObjects" />
       <End Role="Sentence" EntitySet="Sentences" />
     </AssociationSet>
+    <EntitySet Name="Deals" EntityType="EstateAgencyDBModel.Deal" />
+    <AssociationSet Name="FK_Deal_Sentence" Association="EstateAgencyDBModel.FK_Deal_Sentence">
+      <End Role="Sentence" EntitySet="Sentences" />
+      <End Role="Deal" EntitySet="Deals" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Agent">
     <Key>
@@ -71,6 +76,7 @@
     <NavigationProperty Name="Agent" Relationship="EstateAgencyDBModel.FK_Sentence_Agent" FromRole="Sentence" ToRole="Agent" />
     <NavigationProperty Name="Client" Relationship="EstateAgencyDBModel.FK_Sentence_Client" FromRole="Sentence" ToRole="Client" />
     <NavigationProperty Name="EstateObject" Relationship="EstateAgencyDBModel.FK_Sentence_EstateObject" FromRole="Sentence" ToRole="EstateObject" />
+    <NavigationProperty Name="Deals" Relationship="EstateAgencyDBModel.FK_Deal_Sentence" FromRole="Sentence" ToRole="Deal" />
   </EntityType>
   <Association Name="FK_Sentence_Agent">
     <End Type="EstateAgencyDBModel.Agent" Role="Agent" Multiplicity="1" />
@@ -105,6 +111,26 @@
       </Principal>
       <Dependent Role="Sentence">
         <PropertyRef Name="idEstate" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Deal">
+    <Key>
+      <PropertyRef Name="idDeal" />
+    </Key>
+    <Property Name="idDeal" Type="Int32" Nullable="false" />
+    <Property Name="idSentence" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Sentence" Relationship="EstateAgencyDBModel.FK_Deal_Sentence" FromRole="Deal" ToRole="Sentence" />
+  </EntityType>
+  <Association Name="FK_Deal_Sentence">
+    <End Type="EstateAgencyDBModel.Sentence" Role="Sentence" Multiplicity="1" />
+    <End Type="EstateAgencyDBModel.Deal" Role="Deal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sentence">
+        <PropertyRef Name="idSentence" />
+      </Principal>
+      <Dependent Role="Deal">
+        <PropertyRef Name="idSentence" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

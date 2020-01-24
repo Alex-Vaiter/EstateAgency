@@ -12,6 +12,8 @@
         <AssociationConnector Association="EstateAgencyDBModel.FK_Sentence_Agent" />
         <AssociationConnector Association="EstateAgencyDBModel.FK_Sentence_Client" />
         <AssociationConnector Association="EstateAgencyDBModel.FK_Sentence_EstateObject" />
+        <EntityTypeShape EntityType="EstateAgencyDBModel.Deal" Width="1.5" PointX="5.25" PointY="1.625" />
+        <AssociationConnector Association="EstateAgencyDBModel.FK_Deal_Sentence" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

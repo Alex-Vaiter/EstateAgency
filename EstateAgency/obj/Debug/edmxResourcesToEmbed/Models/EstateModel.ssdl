@@ -21,6 +21,13 @@
     <Property Name="phone" Type="nvarchar" MaxLength="20" />
     <Property Name="email" Type="nvarchar" MaxLength="80" />
   </EntityType>
+  <EntityType Name="Deal">
+    <Key>
+      <PropertyRef Name="idDeal" />
+    </Key>
+    <Property Name="idDeal" Type="int" Nullable="false" />
+    <Property Name="idSentence" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="EstateObject">
     <Key>
       <PropertyRef Name="IdEstate" />
@@ -48,6 +55,18 @@
     <Property Name="idEstate" Type="int" Nullable="false" />
     <Property Name="price" Type="decimal" Precision="20" Scale="2" Nullable="false" />
   </EntityType>
+  <Association Name="FK_Deal_Sentence">
+    <End Role="Sentence" Type="Self.Sentence" Multiplicity="1" />
+    <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sentence">
+        <PropertyRef Name="idSentence" />
+      </Principal>
+      <Dependent Role="Deal">
+        <PropertyRef Name="idSentence" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Sentence_Agent">
     <End Role="Agent" Type="Self.Agent" Multiplicity="1" />
     <End Role="Sentence" Type="Self.Sentence" Multiplicity="*" />
@@ -87,8 +106,13 @@
   <EntityContainer Name="Хранилище EstateAgencyDBModelContainer">
     <EntitySet Name="Agent" EntityType="Self.Agent" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Deal" EntityType="Self.Deal" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EstateObject" EntityType="Self.EstateObject" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sentence" EntityType="Self.Sentence" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Deal_Sentence" Association="Self.FK_Deal_Sentence">
+      <End Role="Sentence" EntitySet="Sentence" />
+      <End Role="Deal" EntitySet="Deal" />
+    </AssociationSet>
     <AssociationSet Name="FK_Sentence_Agent" Association="Self.FK_Sentence_Agent">
       <End Role="Agent" EntitySet="Agent" />
       <End Role="Sentence" EntitySet="Sentence" />

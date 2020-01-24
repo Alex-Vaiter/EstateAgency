@@ -53,5 +53,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Deals">
+      <EntityTypeMapping TypeName="EstateAgencyDBModel.Deal">
+        <MappingFragment StoreEntitySet="Deal">
+          <ScalarProperty Name="idSentence" ColumnName="idSentence" />
+          <ScalarProperty Name="idDeal" ColumnName="idDeal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

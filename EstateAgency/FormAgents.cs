@@ -18,70 +18,94 @@ namespace EstateAgency
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (AllValid())
+            try
             {
-                currAgent.firstName = textBoxFirstN.Text;
-                currAgent.middleName = textBoxMiddleN.Text;
-                currAgent.lastName = textBoxLastN.Text;
-                currAgent.dealShare = (int)numDealShare.Value;
+                if (AllValid())
+                {
+                    currAgent.firstName = textBoxFirstN.Text;
+                    currAgent.middleName = textBoxMiddleN.Text;
+                    currAgent.lastName = textBoxLastN.Text;
+                    currAgent.dealShare = (int)numDealShare.Value;
 
-                ClassGetContext.context.Agents.Add(currAgent);
-                ClassGetContext.context.SaveChanges();
+                    ClassGetContext.context.Agents.Add(currAgent);
+                    ClassGetContext.context.SaveChanges();
 
-                FillTable();
-                HidingTracks();
+                    FillTable();
+                    HidingTracks();
+                }
+                else
+                {
+                    FormMessage form = new FormMessage("Проверьте введенные данные", ChangePic.warning);
+                    form.ShowDialog();
+                }
             }
-            else
+            catch
             {
-                FormMessage form = new FormMessage("Проверьте введенные данные", ChangePic.warning);
-                form.ShowDialog();
+                using (var form = new FormMessage("При подключении к базе данных во время добавления произошли ошибки", ChangePic.error))
+                    form.ShowDialog();
             }
         }
 
         private void buttonChange_Click(object sender, EventArgs e)
         {
-            if (AllValid())
+            try
             {
-                currAgent = ClassGetContext.context.Agents.Where(x => x.idAgent == currAgent.idAgent).FirstOrDefault();
-                currAgent.firstName = textBoxFirstN.Text;
-                currAgent.middleName = textBoxMiddleN.Text;
-                currAgent.lastName = textBoxLastN.Text;
-                currAgent.dealShare = (int)numDealShare.Value;
+                if (AllValid())
+                {
+                    currAgent = ClassGetContext.context.Agents.Where(x => x.idAgent == currAgent.idAgent).FirstOrDefault();
+                    currAgent.firstName = textBoxFirstN.Text;
+                    currAgent.middleName = textBoxMiddleN.Text;
+                    currAgent.lastName = textBoxLastN.Text;
+                    currAgent.dealShare = (int)numDealShare.Value;
 
-                ClassGetContext.context.SaveChanges();
+                    ClassGetContext.context.SaveChanges();
 
-                FillTable();
-                HidingTracks();
+                    FillTable();
+                    HidingTracks();
+                }
+                else
+                {
+                    FormMessage form = new FormMessage("Проверьте введенные данные", ChangePic.warning);
+                    form.ShowDialog();
+                }
             }
-            else
+            catch
             {
-                FormMessage form = new FormMessage("Проверьте введенные данные", ChangePic.warning);
-                form.ShowDialog();
+                using (var form = new FormMessage("При подключении к базе данных во время изменения произошли ошибки", ChangePic.error))
+                    form.ShowDialog();
             }
         }
 
         private void buttonDel_Click(object sender, EventArgs e)
         {
-            var ctx = ClassGetContext.context;
-            var isLock = (from agent in ctx.Agents
-                          join sentence in ctx.Sentences on agent.idAgent equals sentence.idAgent
-                          where agent.idAgent == currAgent.idAgent
-                          select agent);
-
-            if (isLock.Any())
+            try
             {
-                FormMessage form = new FormMessage("Данный агент не может быть удален, так как участвует в Предложении", ChangePic.error);
-                form.ShowDialog();
-            }
-            else
-            {
-                var del = ctx.Agents.Where(x => x.idAgent == currAgent.idAgent).FirstOrDefault();
-                ctx.Agents.Remove(del);
-                ctx.SaveChanges();
+                var ctx = ClassGetContext.context;
+                var isLock = (from agent in ctx.Agents
+                              join sentence in ctx.Sentences on agent.idAgent equals sentence.idAgent
+                              where agent.idAgent == currAgent.idAgent
+                              select agent);
 
-                FillTable();
+                if (isLock.Any())
+                {
+                    FormMessage form = new FormMessage("Данный агент не может быть удален, так как участвует в Предложении", ChangePic.error);
+                    form.ShowDialog();
+                }
+                else
+                {
+                    var del = ctx.Agents.Where(x => x.idAgent == currAgent.idAgent).FirstOrDefault();
+                    ctx.Agents.Remove(del);
+                    ctx.SaveChanges();
+
+                    FillTable();
+                }
+                HidingTracks();
             }
-            HidingTracks();
+            catch
+            {
+                using (var form = new FormMessage("При подключении к базе данных во время удаления произошли ошибки", ChangePic.error))
+                    form.ShowDialog();
+            }
         }
 
         private void dataGridViewClients_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -111,10 +135,17 @@ namespace EstateAgency
         private void FillTable()
         {
             dataGridViewAgents.Rows.Clear();
-
-            foreach (Agent item in ClassGetContext.context.Agents)
+            try
             {
-                dataGridViewAgents.Rows.Add(item.idAgent, item.lastName, item.firstName, item.middleName, item.dealShare);
+                foreach (Agent item in ClassGetContext.context.Agents)
+                {
+                    dataGridViewAgents.Rows.Add(item.idAgent, item.lastName, item.firstName, item.middleName, item.dealShare);
+                }
+            }
+            catch
+            {
+                using (var form = new FormMessage("При заполнении списка агентов произошли ошибки", ChangePic.error))
+                    form.ShowDialog();
             }
         }
 
