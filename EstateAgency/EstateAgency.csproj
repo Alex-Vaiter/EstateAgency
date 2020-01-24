@@ -110,6 +110,9 @@
     <Compile Include="Models\Deal.cs">
       <DependentUpon>EstateModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Demand.cs">
+      <DependentUpon>EstateModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EstateModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -127,6 +130,12 @@
     </Compile>
     <Compile Include="Models\EstateObject.cs">
       <DependentUpon>EstateModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormDemand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDemand.Designer.cs">
+      <DependentUpon>FormDemand.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Sentence.cs">
       <DependentUpon>EstateModel.tt</DependentUpon>
@@ -150,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSentence.resx">
       <DependentUpon>FormSentence.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDemand.resx">
+      <DependentUpon>FormDemand.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

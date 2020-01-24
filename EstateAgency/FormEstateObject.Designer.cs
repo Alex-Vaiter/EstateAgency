@@ -84,9 +84,9 @@
             this.textBoxHouseSearch = new System.Windows.Forms.TextBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.numArea = new System.Windows.Forms.NumericUpDown();
-            this.numApartSearch = new System.Windows.Forms.NumericUpDown();
             this.buttonClear = new System.Windows.Forms.Button();
+            this.numApartSearch = new System.Windows.Forms.NumericUpDown();
+            this.numArea = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEstates)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLatit)).BeginInit();
@@ -94,8 +94,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numTotalFloor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numTotalRooms)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numArea)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numApartSearch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numArea)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonDel
@@ -684,6 +684,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Поиск";
             // 
+            // buttonClear
+            // 
+            this.buttonClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.buttonClear.Font = new System.Drawing.Font("Roboto", 10F);
+            this.buttonClear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.buttonClear.Location = new System.Drawing.Point(197, 139);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(130, 23);
+            this.buttonClear.TabIndex = 60;
+            this.buttonClear.Text = "Сброс";
+            this.buttonClear.UseVisualStyleBackColor = false;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
+            // numApartSearch
+            // 
+            this.numApartSearch.Location = new System.Drawing.Point(197, 105);
+            this.numApartSearch.Name = "numApartSearch";
+            this.numApartSearch.Size = new System.Drawing.Size(139, 24);
+            this.numApartSearch.TabIndex = 59;
+            // 
             // numArea
             // 
             this.numArea.DecimalPlaces = 3;
@@ -697,26 +717,6 @@
             this.numArea.Name = "numArea";
             this.numArea.Size = new System.Drawing.Size(92, 30);
             this.numArea.TabIndex = 60;
-            // 
-            // numApartSearch
-            // 
-            this.numApartSearch.Location = new System.Drawing.Point(197, 105);
-            this.numApartSearch.Name = "numApartSearch";
-            this.numApartSearch.Size = new System.Drawing.Size(139, 24);
-            this.numApartSearch.TabIndex = 59;
-            // 
-            // buttonClear
-            // 
-            this.buttonClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
-            this.buttonClear.Font = new System.Drawing.Font("Roboto", 10F);
-            this.buttonClear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.buttonClear.Location = new System.Drawing.Point(197, 139);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(130, 23);
-            this.buttonClear.TabIndex = 60;
-            this.buttonClear.Text = "Сброс";
-            this.buttonClear.UseVisualStyleBackColor = false;
-            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // FormEstateObject
             // 
@@ -763,6 +763,7 @@
             this.Name = "FormEstateObject";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEstateObject";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormEstateObject_FormClosing);
             this.Load += new System.EventHandler(this.FormEstateObject_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEstates)).EndInit();
@@ -772,8 +773,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numTotalRooms)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numArea)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numApartSearch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numArea)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

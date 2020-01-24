@@ -28,6 +28,31 @@
     <Property Name="idDeal" Type="int" Nullable="false" />
     <Property Name="idSentence" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Demand">
+    <Key>
+      <PropertyRef Name="idDemand" />
+    </Key>
+    <Property Name="idDemand" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idClient" Type="int" Nullable="false" />
+    <Property Name="idAgent" Type="int" Nullable="false" />
+    <Property Name="typeEstate" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="minPrice" Type="int" />
+    <Property Name="maxPrice" Type="int" />
+    <Property Name="city" Type="nvarchar" MaxLength="200" />
+    <Property Name="street" Type="nvarchar" MaxLength="200" />
+    <Property Name="house" Type="nvarchar" MaxLength="50" />
+    <Property Name="apartment" Type="nvarchar" MaxLength="50" />
+    <Property Name="latitude" Type="decimal" Precision="20" Scale="15" />
+    <Property Name="longitude" Type="decimal" Precision="20" Scale="15" />
+    <Property Name="minArea" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="maxArea" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="minTotalRooms" Type="int" />
+    <Property Name="maxTotalRooms" Type="int" />
+    <Property Name="minFloor" Type="int" />
+    <Property Name="maxFloor" Type="int" />
+    <Property Name="minTotalFloors" Type="int" />
+    <Property Name="maxTotalFloors" Type="int" />
+  </EntityType>
   <EntityType Name="EstateObject">
     <Key>
       <PropertyRef Name="IdEstate" />
@@ -53,7 +78,7 @@
     <Property Name="idClient" Type="int" Nullable="false" />
     <Property Name="idAgent" Type="int" Nullable="false" />
     <Property Name="idEstate" Type="int" Nullable="false" />
-    <Property Name="price" Type="decimal" Precision="20" Scale="2" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Deal_Sentence">
     <End Role="Sentence" Type="Self.Sentence" Multiplicity="1" />
@@ -64,6 +89,30 @@
       </Principal>
       <Dependent Role="Deal">
         <PropertyRef Name="idSentence" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Demand_Agent">
+    <End Role="Agent" Type="Self.Agent" Multiplicity="1" />
+    <End Role="Demand" Type="Self.Demand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agent">
+        <PropertyRef Name="idAgent" />
+      </Principal>
+      <Dependent Role="Demand">
+        <PropertyRef Name="idAgent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Demand_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Demand" Type="Self.Demand" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="idClient" />
+      </Principal>
+      <Dependent Role="Demand">
+        <PropertyRef Name="idClient" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -107,11 +156,20 @@
     <EntitySet Name="Agent" EntityType="Self.Agent" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Deal" EntityType="Self.Deal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Demand" EntityType="Self.Demand" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EstateObject" EntityType="Self.EstateObject" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sentence" EntityType="Self.Sentence" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Deal_Sentence" Association="Self.FK_Deal_Sentence">
       <End Role="Sentence" EntitySet="Sentence" />
       <End Role="Deal" EntitySet="Deal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demand_Agent" Association="Self.FK_Demand_Agent">
+      <End Role="Agent" EntitySet="Agent" />
+      <End Role="Demand" EntitySet="Demand" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demand_Client" Association="Self.FK_Demand_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Demand" EntitySet="Demand" />
     </AssociationSet>
     <AssociationSet Name="FK_Sentence_Agent" Association="Self.FK_Sentence_Agent">
       <End Role="Agent" EntitySet="Agent" />

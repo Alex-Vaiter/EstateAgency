@@ -138,6 +138,9 @@ namespace EstateAgency
             textBoxMail.Text = row.Cells[5].Value.ToString();
             buttonChange.Enabled = true;
             buttonDel.Enabled = true;
+
+            FillSentence();
+            FillDemand();
         }
 
         private void FillTable()
@@ -154,6 +157,67 @@ namespace EstateAgency
             catch
             {
                 using (var form = new FormMessage("При заполнении списка клиентов произошли ошибки", ChangePic.error))
+                    form.ShowDialog();
+            }
+        }
+
+        private void FillSentence()
+        {
+            dataGridViewSentence.Rows.Clear();
+
+            try
+            {
+                var ctx = ClassGetContext.context;
+                var table = from sent in ctx.Sentences
+                            join agent in ctx.Agents on sent.idAgent equals agent.idAgent
+                            join estate in ctx.EstateObjects on sent.idEstate equals estate.idEstate
+                            where sent.idClient == currClient.idClient
+                            select new
+                            {
+                                nameAgent = agent.lastName + " " + agent.firstName,
+                                fullEstate = estate.city + "; " + estate.street + "; ",
+                                sent.price,
+                            };
+
+                foreach(var item in table)
+                {
+                    dataGridViewSentence.Rows.Add(item.nameAgent, item.fullEstate, item.price);
+                }
+            }
+            catch
+            {
+                using (var form = new FormMessage("При заполнения списка предложений произошли ошибки", ChangePic.error))
+                    form.ShowDialog();
+            }
+        }
+
+        private void FillDemand()
+        {
+            dataGridViewDemand.Rows.Clear();
+
+            try
+            {
+                var ctx = ClassGetContext.context;
+                var table = from dem in ctx.Demands
+                            join agent in ctx.Agents on dem.idAgent equals agent.idAgent
+                            where dem.idClient == currClient.idClient
+                            select new
+                            {
+                                nameAgent = agent.lastName + " " + agent.firstName,
+                                fullEstate = dem.city + "; " + dem.street + "; ",
+                                dem.typeEstate,
+                                dem.minPrice,
+                                dem.maxPrice,
+                            };
+
+                foreach (var item in table)
+                {
+                    dataGridViewDemand.Rows.Add(item.nameAgent, item.fullEstate, item.typeEstate, item.minPrice, item.maxPrice);
+                }
+            }
+            catch
+            {
+                using (var form = new FormMessage("При заполнения списка предложений произошли ошибки", ChangePic.error))
                     form.ShowDialog();
             }
         }

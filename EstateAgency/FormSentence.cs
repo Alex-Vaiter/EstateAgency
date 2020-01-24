@@ -173,7 +173,7 @@ namespace EstateAgency
                         currSentence.idAgent = Convert.ToInt32(comboBoxAgent.SelectedValue);
                         currSentence.idClient = Convert.ToInt32(comboBoxClient.SelectedValue);
                         currSentence.idEstate = Convert.ToInt32(comboBoxEstate.SelectedValue);
-                        currSentence.price = numPrice.Value;
+                        currSentence.price = (int)numPrice.Value;
 
                         ClassGetContext.context.Sentences.Add(currSentence);
                         ClassGetContext.context.SaveChanges();
@@ -207,7 +207,7 @@ namespace EstateAgency
                         currSentence.idAgent = Convert.ToInt32(comboBoxAgent.SelectedValue);
                         currSentence.idClient = Convert.ToInt32(comboBoxClient.SelectedValue);
                         currSentence.idEstate = Convert.ToInt32(comboBoxEstate.SelectedValue);
-                        currSentence.price = numPrice.Value;
+                        currSentence.price = (int)numPrice.Value;
 
                         ClassGetContext.context.SaveChanges();
                         using (var form = new FormMessage("Изменения успешны", ChangePic.success))

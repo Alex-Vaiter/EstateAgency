@@ -19,8 +19,6 @@ namespace EstateAgency
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            FormMain form = new FormMain();
-            form.Show();
             Close();
         }
 
@@ -335,6 +333,12 @@ namespace EstateAgency
                 using (var form = new FormMessage("Что-то пошло не так...", ChangePic.error))
                     form.ShowDialog();
             }
+        }
+
+        private void FormEstateObject_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FormMain form = new FormMain();
+            form.Show();
         }
     }
 }

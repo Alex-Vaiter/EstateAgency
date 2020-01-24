@@ -24,7 +24,7 @@ namespace EstateAgency.Models
         public int idClient { get; set; }
         public int idAgent { get; set; }
         public int idEstate { get; set; }
-        public decimal price { get; set; }
+        public int price { get; set; }
     
         public virtual Agent Agent { get; set; }
         public virtual Client Client { get; set; }

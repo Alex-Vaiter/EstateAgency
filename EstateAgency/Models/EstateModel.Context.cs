@@ -30,5 +30,6 @@ namespace EstateAgency.Models
         public virtual DbSet<EstateObject> EstateObjects { get; set; }
         public virtual DbSet<Sentence> Sentences { get; set; }
         public virtual DbSet<Deal> Deals { get; set; }
+        public virtual DbSet<Demand> Demands { get; set; }
     }
 }

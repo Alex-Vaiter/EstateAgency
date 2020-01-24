@@ -33,6 +33,31 @@
           <Property Name="idDeal" Type="int" Nullable="false" />
           <Property Name="idSentence" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Demand">
+          <Key>
+            <PropertyRef Name="idDemand" />
+          </Key>
+          <Property Name="idDemand" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idClient" Type="int" Nullable="false" />
+          <Property Name="idAgent" Type="int" Nullable="false" />
+          <Property Name="typeEstate" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="minPrice" Type="int" />
+          <Property Name="maxPrice" Type="int" />
+          <Property Name="city" Type="nvarchar" MaxLength="200" />
+          <Property Name="street" Type="nvarchar" MaxLength="200" />
+          <Property Name="house" Type="nvarchar" MaxLength="50" />
+          <Property Name="apartment" Type="nvarchar" MaxLength="50" />
+          <Property Name="latitude" Type="decimal" Precision="20" Scale="15" />
+          <Property Name="longitude" Type="decimal" Precision="20" Scale="15" />
+          <Property Name="minArea" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="maxArea" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="minTotalRooms" Type="int" />
+          <Property Name="maxTotalRooms" Type="int" />
+          <Property Name="minFloor" Type="int" />
+          <Property Name="maxFloor" Type="int" />
+          <Property Name="minTotalFloors" Type="int" />
+          <Property Name="maxTotalFloors" Type="int" />
+        </EntityType>
         <EntityType Name="EstateObject">
           <Key>
             <PropertyRef Name="IdEstate" />
@@ -58,7 +83,7 @@
           <Property Name="idClient" Type="int" Nullable="false" />
           <Property Name="idAgent" Type="int" Nullable="false" />
           <Property Name="idEstate" Type="int" Nullable="false" />
-          <Property Name="price" Type="decimal" Precision="20" Scale="2" Nullable="false" />
+          <Property Name="price" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Deal_Sentence">
           <End Role="Sentence" Type="Self.Sentence" Multiplicity="1" />
@@ -69,6 +94,30 @@
             </Principal>
             <Dependent Role="Deal">
               <PropertyRef Name="idSentence" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Agent">
+          <End Role="Agent" Type="Self.Agent" Multiplicity="1" />
+          <End Role="Demand" Type="Self.Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agent">
+              <PropertyRef Name="idAgent" />
+            </Principal>
+            <Dependent Role="Demand">
+              <PropertyRef Name="idAgent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Demand" Type="Self.Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="idClient" />
+            </Principal>
+            <Dependent Role="Demand">
+              <PropertyRef Name="idClient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -112,11 +161,20 @@
           <EntitySet Name="Agent" EntityType="Self.Agent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Deal" EntityType="Self.Deal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Demand" EntityType="Self.Demand" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EstateObject" EntityType="Self.EstateObject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sentence" EntityType="Self.Sentence" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Deal_Sentence" Association="Self.FK_Deal_Sentence">
             <End Role="Sentence" EntitySet="Sentence" />
             <End Role="Deal" EntitySet="Deal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Agent" Association="Self.FK_Demand_Agent">
+            <End Role="Agent" EntitySet="Agent" />
+            <End Role="Demand" EntitySet="Demand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Client" Association="Self.FK_Demand_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Demand" EntitySet="Demand" />
           </AssociationSet>
           <AssociationSet Name="FK_Sentence_Agent" Association="Self.FK_Sentence_Agent">
             <End Role="Agent" EntitySet="Agent" />
@@ -157,6 +215,15 @@
             <End Role="Sentence" EntitySet="Sentences" />
             <End Role="Deal" EntitySet="Deals" />
           </AssociationSet>
+          <EntitySet Name="Demands" EntityType="EstateAgencyDBModel.Demand" />
+          <AssociationSet Name="FK_Demand_Agent" Association="EstateAgencyDBModel.FK_Demand_Agent">
+            <End Role="Agent" EntitySet="Agents" />
+            <End Role="Demand" EntitySet="Demands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Demand_Client" Association="EstateAgencyDBModel.FK_Demand_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Demand" EntitySet="Demands" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Agent">
           <Key>
@@ -168,6 +235,7 @@
           <Property Name="lastName" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
           <Property Name="dealShare" Type="Int32" />
           <NavigationProperty Name="Sentences" Relationship="EstateAgencyDBModel.FK_Sentence_Agent" FromRole="Agent" ToRole="Sentence" />
+          <NavigationProperty Name="Demands" Relationship="EstateAgencyDBModel.FK_Demand_Agent" FromRole="Agent" ToRole="Demand" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -180,6 +248,7 @@
           <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="email" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Sentences" Relationship="EstateAgencyDBModel.FK_Sentence_Client" FromRole="Client" ToRole="Sentence" />
+          <NavigationProperty Name="Demands" Relationship="EstateAgencyDBModel.FK_Demand_Client" FromRole="Client" ToRole="Demand" />
         </EntityType>
         <EntityType Name="EstateObject">
           <Key>
@@ -207,7 +276,7 @@
           <Property Name="idClient" Type="Int32" Nullable="false" />
           <Property Name="idAgent" Type="Int32" Nullable="false" />
           <Property Name="idEstate" Type="Int32" Nullable="false" />
-          <Property Name="price" Type="Decimal" Nullable="false" Precision="20" Scale="2" />
+          <Property Name="price" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Agent" Relationship="EstateAgencyDBModel.FK_Sentence_Agent" FromRole="Sentence" ToRole="Agent" />
           <NavigationProperty Name="Client" Relationship="EstateAgencyDBModel.FK_Sentence_Client" FromRole="Sentence" ToRole="Client" />
           <NavigationProperty Name="EstateObject" Relationship="EstateAgencyDBModel.FK_Sentence_EstateObject" FromRole="Sentence" ToRole="EstateObject" />
@@ -266,6 +335,57 @@
             </Principal>
             <Dependent Role="Deal">
               <PropertyRef Name="idSentence" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Demand">
+          <Key>
+            <PropertyRef Name="idDemand" />
+          </Key>
+          <Property Name="idDemand" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idClient" Type="Int32" Nullable="false" />
+          <Property Name="idAgent" Type="Int32" Nullable="false" />
+          <Property Name="typeEstate" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="minPrice" Type="Int32" />
+          <Property Name="maxPrice" Type="Int32" />
+          <Property Name="city" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="street" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="house" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="apartment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="latitude" Type="Decimal" Precision="20" Scale="15" />
+          <Property Name="longitude" Type="Decimal" Precision="20" Scale="15" />
+          <Property Name="minArea" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="maxArea" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="minTotalRooms" Type="Int32" />
+          <Property Name="maxTotalRooms" Type="Int32" />
+          <Property Name="minFloor" Type="Int32" />
+          <Property Name="maxFloor" Type="Int32" />
+          <Property Name="minTotalFloors" Type="Int32" />
+          <Property Name="maxTotalFloors" Type="Int32" />
+          <NavigationProperty Name="Agent" Relationship="EstateAgencyDBModel.FK_Demand_Agent" FromRole="Demand" ToRole="Agent" />
+          <NavigationProperty Name="Client" Relationship="EstateAgencyDBModel.FK_Demand_Client" FromRole="Demand" ToRole="Client" />
+        </EntityType>
+        <Association Name="FK_Demand_Agent">
+          <End Type="EstateAgencyDBModel.Agent" Role="Agent" Multiplicity="1" />
+          <End Type="EstateAgencyDBModel.Demand" Role="Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agent">
+              <PropertyRef Name="idAgent" />
+            </Principal>
+            <Dependent Role="Demand">
+              <PropertyRef Name="idAgent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Demand_Client">
+          <End Type="EstateAgencyDBModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="EstateAgencyDBModel.Demand" Role="Demand" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="idClient" />
+            </Principal>
+            <Dependent Role="Demand">
+              <PropertyRef Name="idClient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -332,6 +452,32 @@
               <MappingFragment StoreEntitySet="Deal">
                 <ScalarProperty Name="idSentence" ColumnName="idSentence" />
                 <ScalarProperty Name="idDeal" ColumnName="idDeal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Demands">
+            <EntityTypeMapping TypeName="EstateAgencyDBModel.Demand">
+              <MappingFragment StoreEntitySet="Demand">
+                <ScalarProperty Name="maxTotalFloors" ColumnName="maxTotalFloors" />
+                <ScalarProperty Name="minTotalFloors" ColumnName="minTotalFloors" />
+                <ScalarProperty Name="maxFloor" ColumnName="maxFloor" />
+                <ScalarProperty Name="minFloor" ColumnName="minFloor" />
+                <ScalarProperty Name="maxTotalRooms" ColumnName="maxTotalRooms" />
+                <ScalarProperty Name="minTotalRooms" ColumnName="minTotalRooms" />
+                <ScalarProperty Name="maxArea" ColumnName="maxArea" />
+                <ScalarProperty Name="minArea" ColumnName="minArea" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="apartment" ColumnName="apartment" />
+                <ScalarProperty Name="house" ColumnName="house" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="maxPrice" ColumnName="maxPrice" />
+                <ScalarProperty Name="minPrice" ColumnName="minPrice" />
+                <ScalarProperty Name="typeEstate" ColumnName="typeEstate" />
+                <ScalarProperty Name="idAgent" ColumnName="idAgent" />
+                <ScalarProperty Name="idClient" ColumnName="idClient" />
+                <ScalarProperty Name="idDemand" ColumnName="idDemand" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

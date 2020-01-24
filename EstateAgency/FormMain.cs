@@ -44,5 +44,12 @@ namespace EstateAgency
             form.Show();
             Hide();
         }
+
+        private void buttonDemand_Click(object sender, EventArgs e)
+        {
+            FormDemand form = new FormDemand();
+            form.Show();
+            Hide();
+        }
     }
 }

@@ -61,5 +61,31 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Demands">
+      <EntityTypeMapping TypeName="EstateAgencyDBModel.Demand">
+        <MappingFragment StoreEntitySet="Demand">
+          <ScalarProperty Name="maxTotalFloors" ColumnName="maxTotalFloors" />
+          <ScalarProperty Name="minTotalFloors" ColumnName="minTotalFloors" />
+          <ScalarProperty Name="maxFloor" ColumnName="maxFloor" />
+          <ScalarProperty Name="minFloor" ColumnName="minFloor" />
+          <ScalarProperty Name="maxTotalRooms" ColumnName="maxTotalRooms" />
+          <ScalarProperty Name="minTotalRooms" ColumnName="minTotalRooms" />
+          <ScalarProperty Name="maxArea" ColumnName="maxArea" />
+          <ScalarProperty Name="minArea" ColumnName="minArea" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="apartment" ColumnName="apartment" />
+          <ScalarProperty Name="house" ColumnName="house" />
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="maxPrice" ColumnName="maxPrice" />
+          <ScalarProperty Name="minPrice" ColumnName="minPrice" />
+          <ScalarProperty Name="typeEstate" ColumnName="typeEstate" />
+          <ScalarProperty Name="idAgent" ColumnName="idAgent" />
+          <ScalarProperty Name="idClient" ColumnName="idClient" />
+          <ScalarProperty Name="idDemand" ColumnName="idDemand" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

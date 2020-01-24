@@ -120,6 +120,70 @@ namespace EstateAgency
 
             buttonChange.Enabled = true;
             buttonDel.Enabled = true;
+
+            FillDemand();
+            FillSentence();
+        }
+
+        private void FillSentence()
+        {
+            dataGridViewSentence.Rows.Clear();
+
+            try
+            {
+                var ctx = ClassGetContext.context;
+                var table = from sent in ctx.Sentences
+                            join client in ctx.Clients on sent.idClient equals client.idClient
+                            join estate in ctx.EstateObjects on sent.idEstate equals estate.idEstate
+                            where sent.idAgent == currAgent.idAgent
+                            select new
+                            {
+                                nameAgent = client.lastName + " " + client.firstName,
+                                fullEstate = estate.city + "; " + estate.street + "; ",
+                                sent.price,
+                            };
+
+                foreach (var item in table)
+                {
+                    dataGridViewSentence.Rows.Add(item.nameAgent, item.fullEstate, item.price);
+                }
+            }
+            catch
+            {
+                using (var form = new FormMessage("При заполнения списка предложений произошли ошибки", ChangePic.error))
+                    form.ShowDialog();
+            }
+        }
+
+        private void FillDemand()
+        {
+            dataGridViewDemand.Rows.Clear();
+
+            try
+            {
+                var ctx = ClassGetContext.context;
+                var table = from dem in ctx.Demands
+                            join client in ctx.Clients on dem.idClient equals client.idClient
+                            where dem.idAgent == currAgent.idAgent
+                            select new
+                            {
+                                nameAgent = client.lastName + " " + client.firstName,
+                                fullEstate = dem.city + "; " + dem.street + "; ",
+                                dem.typeEstate,
+                                dem.minPrice,
+                                dem.maxPrice,
+                            };
+
+                foreach (var item in table)
+                {
+                    dataGridViewDemand.Rows.Add(item.nameAgent, item.fullEstate, item.typeEstate, item.minPrice, item.maxPrice);
+                }
+            }
+            catch
+            {
+                using (var form = new FormMessage("При заполнения списка предложений произошли ошибки", ChangePic.error))
+                    form.ShowDialog();
+            }
         }
 
         private void buttonBack_Click(object sender, EventArgs e)

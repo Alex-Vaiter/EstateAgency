@@ -18,6 +18,7 @@ namespace EstateAgency.Models
         public Client()
         {
             this.Sentences = new HashSet<Sentence>();
+            this.Demands = new HashSet<Demand>();
         }
     
         public int idClient { get; set; }
@@ -29,5 +30,7 @@ namespace EstateAgency.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sentence> Sentences { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Demand> Demands { get; set; }
     }
 }
