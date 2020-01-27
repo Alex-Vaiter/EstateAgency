@@ -17,6 +17,7 @@
         <EntityTypeShape EntityType="EstateAgencyDBModel.Demand" Width="1.5" PointX="3" PointY="4.625" />
         <AssociationConnector Association="EstateAgencyDBModel.FK_Demand_Agent" />
         <AssociationConnector Association="EstateAgencyDBModel.FK_Demand_Client" />
+        <AssociationConnector Association="EstateAgencyDBModel.FK_Deal_Demand" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

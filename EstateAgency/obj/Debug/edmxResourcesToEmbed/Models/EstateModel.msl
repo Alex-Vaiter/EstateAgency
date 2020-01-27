@@ -56,6 +56,7 @@
     <EntitySetMapping Name="Deals">
       <EntityTypeMapping TypeName="EstateAgencyDBModel.Deal">
         <MappingFragment StoreEntitySet="Deal">
+          <ScalarProperty Name="idDemand" ColumnName="idDemand" />
           <ScalarProperty Name="idSentence" ColumnName="idSentence" />
           <ScalarProperty Name="idDeal" ColumnName="idDeal" />
         </MappingFragment>

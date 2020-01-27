@@ -14,6 +14,12 @@ namespace EstateAgency.Models
     
     public partial class Demand
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Demand()
+        {
+            this.Deals = new HashSet<Deal>();
+        }
+    
         public int idDemand { get; set; }
         public int idClient { get; set; }
         public int idAgent { get; set; }
@@ -37,5 +43,7 @@ namespace EstateAgency.Models
     
         public virtual Agent Agent { get; set; }
         public virtual Client Client { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Deal> Deals { get; set; }
     }
 }

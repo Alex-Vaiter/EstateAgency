@@ -23,3 +23,4 @@ D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\bin\Deb
 D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormEstateObject.resources
 D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormSentence.resources
 D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormDemand.resources
+D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormDeal.resources

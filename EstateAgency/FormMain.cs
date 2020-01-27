@@ -51,5 +51,12 @@ namespace EstateAgency
             form.Show();
             Hide();
         }
+
+        private void buttonDeals_Click(object sender, EventArgs e)
+        {
+            FormDeal form = new FormDeal();
+            form.Show();
+            Hide();
+        }
     }
 }

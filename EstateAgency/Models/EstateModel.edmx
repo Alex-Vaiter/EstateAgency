@@ -32,6 +32,7 @@
           </Key>
           <Property Name="idDeal" Type="int" Nullable="false" />
           <Property Name="idSentence" Type="int" Nullable="false" />
+          <Property Name="idDemand" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Demand">
           <Key>
@@ -85,6 +86,18 @@
           <Property Name="idEstate" Type="int" Nullable="false" />
           <Property Name="price" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Deal_Demand">
+          <End Role="Demand" Type="Self.Demand" Multiplicity="1" />
+          <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Demand">
+              <PropertyRef Name="idDemand" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="idDemand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Deal_Sentence">
           <End Role="Sentence" Type="Self.Sentence" Multiplicity="1" />
           <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
@@ -164,6 +177,10 @@
           <EntitySet Name="Demand" EntityType="Self.Demand" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EstateObject" EntityType="Self.EstateObject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sentence" EntityType="Self.Sentence" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Deal_Demand" Association="Self.FK_Deal_Demand">
+            <End Role="Demand" EntitySet="Demand" />
+            <End Role="Deal" EntitySet="Deal" />
+          </AssociationSet>
           <AssociationSet Name="FK_Deal_Sentence" Association="Self.FK_Deal_Sentence">
             <End Role="Sentence" EntitySet="Sentence" />
             <End Role="Deal" EntitySet="Deal" />
@@ -223,6 +240,10 @@
           <AssociationSet Name="FK_Demand_Client" Association="EstateAgencyDBModel.FK_Demand_Client">
             <End Role="Client" EntitySet="Clients" />
             <End Role="Demand" EntitySet="Demands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deal_Demand" Association="EstateAgencyDBModel.FK_Deal_Demand">
+            <End Role="Demand" EntitySet="Demands" />
+            <End Role="Deal" EntitySet="Deals" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Agent">
@@ -325,6 +346,8 @@
           <Property Name="idDeal" Type="Int32" Nullable="false" />
           <Property Name="idSentence" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Sentence" Relationship="EstateAgencyDBModel.FK_Deal_Sentence" FromRole="Deal" ToRole="Sentence" />
+          <Property Name="idDemand" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Demand" Relationship="EstateAgencyDBModel.FK_Deal_Demand" FromRole="Deal" ToRole="Demand" />
         </EntityType>
         <Association Name="FK_Deal_Sentence">
           <End Type="EstateAgencyDBModel.Sentence" Role="Sentence" Multiplicity="1" />
@@ -364,6 +387,7 @@
           <Property Name="maxTotalFloors" Type="Int32" />
           <NavigationProperty Name="Agent" Relationship="EstateAgencyDBModel.FK_Demand_Agent" FromRole="Demand" ToRole="Agent" />
           <NavigationProperty Name="Client" Relationship="EstateAgencyDBModel.FK_Demand_Client" FromRole="Demand" ToRole="Client" />
+          <NavigationProperty Name="Deals" Relationship="EstateAgencyDBModel.FK_Deal_Demand" FromRole="Demand" ToRole="Deal" />
         </EntityType>
         <Association Name="FK_Demand_Agent">
           <End Type="EstateAgencyDBModel.Agent" Role="Agent" Multiplicity="1" />
@@ -386,6 +410,18 @@
             </Principal>
             <Dependent Role="Demand">
               <PropertyRef Name="idClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deal_Demand">
+          <End Type="EstateAgencyDBModel.Demand" Role="Demand" Multiplicity="1" />
+          <End Type="EstateAgencyDBModel.Deal" Role="Deal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Demand">
+              <PropertyRef Name="idDemand" />
+            </Principal>
+            <Dependent Role="Deal">
+              <PropertyRef Name="idDemand" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -450,6 +486,7 @@
           <EntitySetMapping Name="Deals">
             <EntityTypeMapping TypeName="EstateAgencyDBModel.Deal">
               <MappingFragment StoreEntitySet="Deal">
+                <ScalarProperty Name="idDemand" ColumnName="idDemand" />
                 <ScalarProperty Name="idSentence" ColumnName="idSentence" />
                 <ScalarProperty Name="idDeal" ColumnName="idDeal" />
               </MappingFragment>

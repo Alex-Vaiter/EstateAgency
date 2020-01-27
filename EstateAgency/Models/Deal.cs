@@ -16,7 +16,9 @@ namespace EstateAgency.Models
     {
         public int idDeal { get; set; }
         public int idSentence { get; set; }
+        public int idDemand { get; set; }
     
         public virtual Sentence Sentence { get; set; }
+        public virtual Demand Demand { get; set; }
     }
 }
