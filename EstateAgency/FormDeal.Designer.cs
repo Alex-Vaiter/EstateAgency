@@ -61,6 +61,9 @@
             this.ColumnAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnClientDem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAgentDem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTypeEstate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnComissRieltSeller = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnComissRieltBuyer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDeals)).BeginInit();
             this.SuspendLayout();
@@ -104,7 +107,10 @@
             this.ColumnClient,
             this.ColumnAgent,
             this.ColumnClientDem,
-            this.ColumnAgentDem});
+            this.ColumnAgentDem,
+            this.ColumnTypeEstate,
+            this.ColumnComissRieltSeller,
+            this.ColumnComissRieltBuyer});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -127,6 +133,7 @@
             this.dataGridViewDeals.RowHeadersVisible = false;
             this.dataGridViewDeals.Size = new System.Drawing.Size(1192, 176);
             this.dataGridViewDeals.TabIndex = 21;
+            this.dataGridViewDeals.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDeals_CellClick);
             // 
             // label1
             // 
@@ -142,7 +149,7 @@
             // 
             this.label2.Font = new System.Drawing.Font("Roboto", 14F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.label2.Location = new System.Drawing.Point(14, 435);
+            this.label2.Location = new System.Drawing.Point(14, 352);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(217, 24);
             this.label2.TabIndex = 77;
@@ -151,19 +158,19 @@
             // comboBoxSentence
             // 
             this.comboBoxSentence.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSentence.DropDownWidth = 800;
+            this.comboBoxSentence.DropDownWidth = 1186;
             this.comboBoxSentence.Font = new System.Drawing.Font("Roboto", 10F);
             this.comboBoxSentence.FormattingEnabled = true;
-            this.comboBoxSentence.Location = new System.Drawing.Point(18, 460);
+            this.comboBoxSentence.Location = new System.Drawing.Point(18, 377);
             this.comboBoxSentence.Name = "comboBoxSentence";
-            this.comboBoxSentence.Size = new System.Drawing.Size(579, 23);
+            this.comboBoxSentence.Size = new System.Drawing.Size(1186, 23);
             this.comboBoxSentence.TabIndex = 75;
             // 
             // label12
             // 
             this.label12.Font = new System.Drawing.Font("Roboto", 14F);
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.label12.Location = new System.Drawing.Point(14, 349);
+            this.label12.Location = new System.Drawing.Point(14, 297);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(217, 24);
             this.label12.TabIndex = 76;
@@ -172,12 +179,12 @@
             // comboBoxDemand
             // 
             this.comboBoxDemand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDemand.DropDownWidth = 800;
+            this.comboBoxDemand.DropDownWidth = 1186;
             this.comboBoxDemand.Font = new System.Drawing.Font("Roboto", 10F);
             this.comboBoxDemand.FormattingEnabled = true;
-            this.comboBoxDemand.Location = new System.Drawing.Point(18, 376);
+            this.comboBoxDemand.Location = new System.Drawing.Point(18, 324);
             this.comboBoxDemand.Name = "comboBoxDemand";
-            this.comboBoxDemand.Size = new System.Drawing.Size(579, 23);
+            this.comboBoxDemand.Size = new System.Drawing.Size(1186, 23);
             this.comboBoxDemand.TabIndex = 74;
             // 
             // buttonDel
@@ -186,7 +193,7 @@
             this.buttonDel.Enabled = false;
             this.buttonDel.Font = new System.Drawing.Font("Roboto", 10F);
             this.buttonDel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.buttonDel.Location = new System.Drawing.Point(246, 524);
+            this.buttonDel.Location = new System.Drawing.Point(246, 536);
             this.buttonDel.Name = "buttonDel";
             this.buttonDel.Size = new System.Drawing.Size(108, 26);
             this.buttonDel.TabIndex = 84;
@@ -199,7 +206,7 @@
             this.buttonBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.buttonBack.Font = new System.Drawing.Font("Roboto", 10F);
             this.buttonBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.buttonBack.Location = new System.Drawing.Point(1096, 524);
+            this.buttonBack.Location = new System.Drawing.Point(1096, 536);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(108, 26);
             this.buttonBack.TabIndex = 85;
@@ -212,7 +219,7 @@
             this.buttonAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.buttonAdd.Font = new System.Drawing.Font("Roboto", 10F);
             this.buttonAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.buttonAdd.Location = new System.Drawing.Point(18, 524);
+            this.buttonAdd.Location = new System.Drawing.Point(18, 536);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(108, 26);
             this.buttonAdd.TabIndex = 82;
@@ -226,7 +233,7 @@
             this.buttonChange.Enabled = false;
             this.buttonChange.Font = new System.Drawing.Font("Roboto", 10F);
             this.buttonChange.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.buttonChange.Location = new System.Drawing.Point(132, 524);
+            this.buttonChange.Location = new System.Drawing.Point(132, 536);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(108, 26);
             this.buttonChange.TabIndex = 83;
@@ -238,7 +245,7 @@
             // 
             this.textBoxClientSent.Font = new System.Drawing.Font("Roboto", 10F);
             this.textBoxClientSent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.textBoxClientSent.Location = new System.Drawing.Point(672, 376);
+            this.textBoxClientSent.Location = new System.Drawing.Point(18, 467);
             this.textBoxClientSent.Name = "textBoxClientSent";
             this.textBoxClientSent.ReadOnly = true;
             this.textBoxClientSent.Size = new System.Drawing.Size(183, 24);
@@ -248,7 +255,7 @@
             // 
             this.textBoxClientDem.Font = new System.Drawing.Font("Roboto", 10F);
             this.textBoxClientDem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.textBoxClientDem.Location = new System.Drawing.Point(672, 459);
+            this.textBoxClientDem.Location = new System.Drawing.Point(458, 467);
             this.textBoxClientDem.Name = "textBoxClientDem";
             this.textBoxClientDem.ReadOnly = true;
             this.textBoxClientDem.Size = new System.Drawing.Size(183, 24);
@@ -258,7 +265,7 @@
             // 
             this.textBoxAgentDem.Font = new System.Drawing.Font("Roboto", 10F);
             this.textBoxAgentDem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.textBoxAgentDem.Location = new System.Drawing.Point(897, 459);
+            this.textBoxAgentDem.Location = new System.Drawing.Point(679, 467);
             this.textBoxAgentDem.Name = "textBoxAgentDem";
             this.textBoxAgentDem.ReadOnly = true;
             this.textBoxAgentDem.Size = new System.Drawing.Size(183, 24);
@@ -268,7 +275,7 @@
             // 
             this.textBoxAgentSent.Font = new System.Drawing.Font("Roboto", 10F);
             this.textBoxAgentSent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.textBoxAgentSent.Location = new System.Drawing.Point(897, 375);
+            this.textBoxAgentSent.Location = new System.Drawing.Point(240, 467);
             this.textBoxAgentSent.Name = "textBoxAgentSent";
             this.textBoxAgentSent.ReadOnly = true;
             this.textBoxAgentSent.Size = new System.Drawing.Size(183, 24);
@@ -278,7 +285,7 @@
             // 
             this.label3.Font = new System.Drawing.Font("Roboto", 14F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.label3.Location = new System.Drawing.Point(668, 324);
+            this.label3.Location = new System.Drawing.Point(14, 415);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(199, 49);
             this.label3.TabIndex = 90;
@@ -288,7 +295,7 @@
             // 
             this.label4.Font = new System.Drawing.Font("Roboto", 14F);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.label4.Location = new System.Drawing.Point(668, 409);
+            this.label4.Location = new System.Drawing.Point(454, 417);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(199, 50);
             this.label4.TabIndex = 91;
@@ -298,7 +305,7 @@
             // 
             this.label5.Font = new System.Drawing.Font("Roboto", 14F);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.label5.Location = new System.Drawing.Point(893, 324);
+            this.label5.Location = new System.Drawing.Point(236, 416);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(217, 48);
             this.label5.TabIndex = 92;
@@ -308,7 +315,7 @@
             // 
             this.label6.Font = new System.Drawing.Font("Roboto", 14F);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.label6.Location = new System.Drawing.Point(893, 409);
+            this.label6.Location = new System.Drawing.Point(675, 417);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(217, 47);
             this.label6.TabIndex = 93;
@@ -318,7 +325,7 @@
             // 
             this.label7.Font = new System.Drawing.Font("Roboto", 14F);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.label7.Location = new System.Drawing.Point(668, 497);
+            this.label7.Location = new System.Drawing.Point(894, 440);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(217, 24);
             this.label7.TabIndex = 95;
@@ -328,10 +335,10 @@
             // 
             this.textBoxCompany.Font = new System.Drawing.Font("Roboto", 10F);
             this.textBoxCompany.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.textBoxCompany.Location = new System.Drawing.Point(672, 524);
+            this.textBoxCompany.Location = new System.Drawing.Point(898, 467);
             this.textBoxCompany.Name = "textBoxCompany";
             this.textBoxCompany.ReadOnly = true;
-            this.textBoxCompany.Size = new System.Drawing.Size(183, 24);
+            this.textBoxCompany.Size = new System.Drawing.Size(213, 24);
             this.textBoxCompany.TabIndex = 94;
             // 
             // ColumnId
@@ -402,12 +409,33 @@
             this.ColumnAgentDem.Name = "ColumnAgentDem";
             this.ColumnAgentDem.ReadOnly = true;
             // 
+            // ColumnTypeEstate
+            // 
+            this.ColumnTypeEstate.HeaderText = "Тип недвижимости";
+            this.ColumnTypeEstate.Name = "ColumnTypeEstate";
+            this.ColumnTypeEstate.ReadOnly = true;
+            this.ColumnTypeEstate.Visible = false;
+            // 
+            // ColumnComissRieltSeller
+            // 
+            this.ColumnComissRieltSeller.HeaderText = "комиссия риелтора продавца";
+            this.ColumnComissRieltSeller.Name = "ColumnComissRieltSeller";
+            this.ColumnComissRieltSeller.ReadOnly = true;
+            this.ColumnComissRieltSeller.Visible = false;
+            // 
+            // ColumnComissRieltBuyer
+            // 
+            this.ColumnComissRieltBuyer.HeaderText = "комиссия релтора покупателя";
+            this.ColumnComissRieltBuyer.Name = "ColumnComissRieltBuyer";
+            this.ColumnComissRieltBuyer.ReadOnly = true;
+            this.ColumnComissRieltBuyer.Visible = false;
+            // 
             // FormDeal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1216, 562);
+            this.ClientSize = new System.Drawing.Size(1216, 576);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxCompany);
             this.Controls.Add(this.label6);
@@ -474,5 +502,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAgent;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnClientDem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAgentDem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTypeEstate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnComissRieltSeller;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnComissRieltBuyer;
     }
 }

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using EstateAgency.Models;
+using System;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using EstateAgency.Models;
-using EstateAgency.BaseLogic;
 
 namespace EstateAgency
 {
@@ -68,12 +62,15 @@ namespace EstateAgency
                              nameCS = clientSent.lastName + " " + clientSent.firstName,
                              nameAD = agentDem.lastName + " " + agentDem.firstName,
                              nameCD = clientDem.lastName + " " + clientDem.firstName,
+                             estate.typeEstate,
+                             shareSeller = agentSent.dealShare,
+                             shareBuyer = agentDem.dealShare,
                          });
 
-            foreach(var row in table)
+            foreach (var row in table)
             {
-                dataGridViewDeals.Rows.Add(row.idDeal, row.idDemand, row.idSentence, row.address, 
-                    row.price, row.nameCD, row.nameAD, row.nameCS, row.nameAS);
+                dataGridViewDeals.Rows.Add(row.idDeal, row.idDemand, row.idSentence, row.address,
+                    row.price, row.nameCD, row.nameAD, row.nameCS, row.nameAS, row.typeEstate, row.shareSeller, row.shareBuyer);
             }
         }
 
@@ -86,15 +83,16 @@ namespace EstateAgency
                                            select new
                                            {
                                                idSent = sent.idSentence,
-                                               address = "Город: " + estate.city +
-                                               ((estate.street == null || estate.street == "") ? "" : "; Улица: " + estate.street) +
-                                               ((estate.house == null || estate.house == "0" || estate.house == "") ? "" : "; Дом: " + estate.house) +
-                                               ((estate.addressNumber == null || estate.addressNumber == "0" || estate.addressNumber == "") ? "" : "; Квартира: " + estate.addressNumber) +
+
+                                               address = "Тип: " + estate.typeEstate +
+                                               "; Г: " + estate.city +
+                                               ((estate.street == null || estate.street == "") ? "" : "; Ул: " + estate.street) +
+                                               ((estate.house == null || estate.house == "0" || estate.house == "") ? "" : "; Д: " + estate.house) +
+                                               ((estate.addressNumber == null || estate.addressNumber == "0" || estate.addressNumber == "") ? "" : "; Кв: " + estate.addressNumber) +
                                                ((estate.rooms == null || estate.rooms == 0) ? "" : "; Кол-во комнат: " + estate.rooms) +
                                                ((estate.totalArea == null || estate.totalArea == 0) ? "" : "; Площадь: " + estate.totalArea) +
                                                ((estate.totalFloors == null || estate.totalFloors == 0) ? "" : "; Всего этажей: " + estate.totalFloors) +
                                                ((estate.floor == null || estate.floor == 0) ? "" : "; Этаж: " + estate.floor) +
-                                               "; Тип: " + estate.typeEstate +
                                                "; Цена: " + sent.price
                                            }).Where(est => ctx.Deals.Where(dl => dl.idSentence == est.idSent).Count() == 0).ToList();
 
@@ -104,7 +102,30 @@ namespace EstateAgency
 
         private void FillDemand()
         {
+            var ctx = ClassGetContext.context;
 
+            comboBoxDemand.DataSource = (from demand in ctx.Demands
+                                         select new
+                                         {
+                                             idDem = demand.idDemand,
+                                             address = "Тип: " + demand.typeEstate +
+                                             "; Г: " + demand.city +
+                                             ((demand.street == null || demand.street == "") ? "" : "; Ул: " + demand.street) +
+                                             ((demand.house == null || demand.house == "0" || demand.house == "") ? "" : "; Д: " + demand.house) +
+                                             ((demand.apartment == null || demand.apartment == "0" || demand.apartment == "") ? "" : "; Кв: " + demand.apartment) +
+                                             ((demand.minArea == null || demand.minArea == 0) ? "" : "; Мин.площадь: " + demand.minArea) +
+                                             ((demand.maxArea == null || demand.maxArea == 0) ? "" : "; Макс.площадь: " + demand.maxArea) +
+                                             ((demand.minTotalFloors == null || demand.minTotalFloors == 0) ? "" : "; Мин.кол-во этажей: " + demand.minTotalFloors) +
+                                             ((demand.maxTotalFloors == null || demand.maxTotalFloors == 0) ? "" : "; Макс.кол-во этажей: " + demand.maxTotalFloors) +
+                                             ((demand.minTotalRooms == null || demand.minTotalRooms == 0) ? "" : "; Мин.кол-во комнат: " + demand.minTotalRooms) +
+                                             ((demand.maxTotalRooms == null || demand.maxTotalRooms == 0) ? "" : "; Макс.кол-во комнат: " + demand.maxTotalRooms) +
+                                             ((demand.minPrice == null || demand.minPrice == 0) ? "" : "; Мин.цена: " + demand.minPrice) +
+                                             ((demand.maxPrice == null || demand.maxPrice == 0) ? "" : "; Макс.цена: " + demand.maxPrice)
+
+                                         }).Where(est => ctx.Deals.Where(dl => dl.idDemand == est.idDem).Count() == 0).ToList();
+
+            comboBoxDemand.DisplayMember = "address";
+            comboBoxDemand.ValueMember = "idDem";
         }
 
         private void FormDeal_Load(object sender, EventArgs e)
@@ -112,6 +133,82 @@ namespace EstateAgency
             FillTable();
             FillSentence();
             FillDemand();
+        }
+
+        private double CostServiceForClientSeller(int costEstate, string typeEstate)
+        {
+            double result = 0;
+
+            switch (typeEstate)
+            {
+                case "Квартира": result = 36000 + costEstate * 0.01; break;
+                case "Дом": result = 30000 + costEstate * 0.01; break;
+                case "Земля": result = 30000 + costEstate * 0.02; break;
+            }
+
+            return result;
+        }
+
+        private double CostServiceForClientBuyer(int costEstate)
+        {
+            return costEstate * 0.03;
+        }
+
+        /// <summary>
+        /// Возвращает долю риелтора и долю компании
+        /// </summary>
+        /// <returns>(доля риелтора, доля компании)</returns>
+        private (double, double) Comission(double summPay, int dealShare = 45)
+        {
+            double companyPiece = 0, agentPiece = 0;
+
+            agentPiece = summPay / 100 * dealShare;
+            companyPiece = summPay - agentPiece;
+
+            return (agentPiece, companyPiece);
+        }
+
+        private void dataGridViewDeals_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var row = dataGridViewDeals.CurrentRow;
+
+            int priceEstate = Convert.ToInt32(row.Cells[4].Value);
+            string typeEstate = row.Cells[9].Value.ToString();
+
+            double summPay = CostServiceForClientSeller(priceEstate, typeEstate);
+            textBoxClientSent.Text = summPay.ToString();
+
+            (double, double) comiss = (0, 0);
+            if (row.Cells[10].Value != null)
+            {
+                var comissAgentSeller = Convert.ToInt32(row.Cells[10].Value);
+                comiss = Comission(summPay, comissAgentSeller);
+            }
+            else
+            {
+                comiss = Comission(summPay);
+            }
+
+            textBoxAgentSent.Text = comiss.Item1.ToString();
+            double summForCompany = comiss.Item2;
+
+            summPay = CostServiceForClientBuyer(priceEstate);
+            textBoxClientDem.Text = summPay.ToString();
+
+            if (row.Cells[11].Value != null)
+            {
+                var comissAgentBuyer = Convert.ToInt32(row.Cells[11].Value);
+                comiss = Comission(summPay, comissAgentBuyer);
+            }
+            else
+            {
+                comiss = Comission(summPay);
+            }
+
+            textBoxAgentDem.Text = comiss.Item1.ToString();
+            summForCompany += comiss.Item2;
+
+            textBoxCompany.Text = summForCompany.ToString();
         }
     }
 }
