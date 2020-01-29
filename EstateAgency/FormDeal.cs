@@ -1,5 +1,7 @@
-﻿using EstateAgency.Models;
+﻿using EstateAgency.BaseLogic;
+using EstateAgency.Models;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
@@ -26,17 +28,61 @@ namespace EstateAgency
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            try
+            {
+                var deal = new Deal
+                {
+                    idDemand = Convert.ToInt32(comboBoxDemand.SelectedValue),
+                    idSentence = Convert.ToInt32(comboBoxSentence.SelectedValue)
+                };
 
+                ClassGetContext.context.Deals.Add(deal);
+                ClassGetContext.context.SaveChanges();
+                FillTable();
+            }
+            catch
+            {
+                using (var form = new FormMessage("При подключении к базе произошла ошибка", ChangePic.error))
+                    form.ShowDialog();
+            }
         }
 
         private void buttonChange_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int idDeal = Convert.ToInt32(dataGridViewDeals.CurrentRow.Cells[0].Value);
+                var deal = ClassGetContext.context.Deals.Where(dl => dl.idDeal == idDeal).FirstOrDefault();
 
+                deal.idDemand = Convert.ToInt32(comboBoxDemand.SelectedValue);
+                deal.idSentence = Convert.ToInt32(comboBoxSentence.SelectedValue);
+
+                ClassGetContext.context.SaveChanges();
+                FillTable();
+            }
+            catch
+            {
+                using (var form = new FormMessage("При изменении данных произошла ошибка", ChangePic.error))
+                    form.ShowDialog();
+            }
         }
 
         private void buttonDel_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int idDeal = Convert.ToInt32(dataGridViewDeals.CurrentRow.Cells[0].Value);
+                var deal = ClassGetContext.context.Deals.Where(dl => dl.idDeal == idDeal).FirstOrDefault();
 
+                ClassGetContext.context.Deals.Remove(deal);
+                ClassGetContext.context.SaveChanges();
+                FillTable();
+            }
+            catch
+            {
+                using (var form = new FormMessage("При удалении данных произошла ошибка", ChangePic.error))
+                    form.ShowDialog();
+            }
         }
 
         private void FillTable()
@@ -74,11 +120,11 @@ namespace EstateAgency
             }
         }
 
-        private void FillSentence()
+        private void FillSentence(List<Sentence> collection)
         {
             var ctx = ClassGetContext.context;
 
-            comboBoxSentence.DataSource = (from sent in ctx.Sentences
+            comboBoxSentence.DataSource = (from sent in collection
                                            join estate in ctx.EstateObjects on sent.idEstate equals estate.idEstate
                                            select new
                                            {
@@ -94,17 +140,15 @@ namespace EstateAgency
                                                ((estate.totalFloors == null || estate.totalFloors == 0) ? "" : "; Всего этажей: " + estate.totalFloors) +
                                                ((estate.floor == null || estate.floor == 0) ? "" : "; Этаж: " + estate.floor) +
                                                "; Цена: " + sent.price
-                                           }).Where(est => ctx.Deals.Where(dl => dl.idSentence == est.idSent).Count() == 0).ToList();
+                                           }).ToList();
 
             comboBoxSentence.DisplayMember = "address";
             comboBoxSentence.ValueMember = "idSent";
         }
 
-        private void FillDemand()
+        private void FillDemand(List<Demand> collection)
         {
-            var ctx = ClassGetContext.context;
-
-            comboBoxDemand.DataSource = (from demand in ctx.Demands
+            comboBoxDemand.DataSource = (from demand in collection
                                          select new
                                          {
                                              idDem = demand.idDemand,
@@ -122,7 +166,7 @@ namespace EstateAgency
                                              ((demand.minPrice == null || demand.minPrice == 0) ? "" : "; Мин.цена: " + demand.minPrice) +
                                              ((demand.maxPrice == null || demand.maxPrice == 0) ? "" : "; Макс.цена: " + demand.maxPrice)
 
-                                         }).Where(est => ctx.Deals.Where(dl => dl.idDemand == est.idDem).Count() == 0).ToList();
+                                         }).ToList();
 
             comboBoxDemand.DisplayMember = "address";
             comboBoxDemand.ValueMember = "idDem";
@@ -130,9 +174,11 @@ namespace EstateAgency
 
         private void FormDeal_Load(object sender, EventArgs e)
         {
+            var ctx = ClassGetContext.context;
+
             FillTable();
-            FillSentence();
-            FillDemand();
+            FillSentence(ctx.Sentences.ToList());
+            FillDemand(ctx.Demands.ToList());
         }
 
         private double CostServiceForClientSeller(int costEstate, string typeEstate)
@@ -174,15 +220,28 @@ namespace EstateAgency
 
             int priceEstate = Convert.ToInt32(row.Cells[4].Value);
             string typeEstate = row.Cells[9].Value.ToString();
+            object comissSeller = row.Cells[10].Value;
+            object comissBuyer = row.Cells[11].Value;
 
+            CalculateComission(priceEstate, typeEstate, comissSeller, comissBuyer);
+
+            comboBoxDemand.Tag = "";
+            comboBoxSentence.Tag = "";
+            FillSentence(ClassGetContext.context.Sentences.ToList());
+            FillDemand(ClassGetContext.context.Demands.ToList());
+
+        }
+
+        private void CalculateComission(int priceEstate, string typeEstate, object comissAgentSeller, object comissAgentBuyer)
+        {
             double summPay = CostServiceForClientSeller(priceEstate, typeEstate);
             textBoxClientSent.Text = summPay.ToString();
 
             (double, double) comiss = (0, 0);
-            if (row.Cells[10].Value != null)
+            if (comissAgentSeller != null)
             {
-                var comissAgentSeller = Convert.ToInt32(row.Cells[10].Value);
-                comiss = Comission(summPay, comissAgentSeller);
+                var comissSeller = Convert.ToInt32(comissAgentSeller);
+                comiss = Comission(summPay, comissSeller);
             }
             else
             {
@@ -195,10 +254,10 @@ namespace EstateAgency
             summPay = CostServiceForClientBuyer(priceEstate);
             textBoxClientDem.Text = summPay.ToString();
 
-            if (row.Cells[11].Value != null)
+            if (comissAgentBuyer != null)
             {
-                var comissAgentBuyer = Convert.ToInt32(row.Cells[11].Value);
-                comiss = Comission(summPay, comissAgentBuyer);
+                var comissBuyer = Convert.ToInt32(comissAgentBuyer);
+                comiss = Comission(summPay, comissBuyer);
             }
             else
             {
@@ -337,7 +396,7 @@ namespace EstateAgency
             {
                 case "Квартира":
                     {
-                        if(estate.floor == null)
+                        if (estate.floor == null)
                             estate.floor = 0;
 
                         if (demand.minFloor == null)
@@ -356,7 +415,7 @@ namespace EstateAgency
                             demand.minTotalRooms = 1;
 
                         if (demand.maxTotalRooms == null)
-                            demand.maxTotalFloors = estate.floor;
+                            demand.maxTotalRooms = estate.rooms;
 
                         if (demand.minTotalRooms > estate.rooms || demand.maxTotalRooms < estate.rooms)
                             return false;
@@ -384,7 +443,7 @@ namespace EstateAgency
                             demand.minTotalRooms = 1;
 
                         if (demand.maxTotalRooms == null)
-                            demand.maxTotalFloors = estate.floor;
+                            demand.maxTotalRooms = estate.rooms;
 
                         if (demand.minTotalRooms > estate.rooms || demand.maxTotalRooms < estate.rooms)
                             return false;
@@ -396,30 +455,67 @@ namespace EstateAgency
             return true;
         }
 
-        private void comboBoxSentence_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxDemand_Click(object sender, EventArgs e)
         {
-            
+            if(comboBoxSentence.Tag.ToString() != "active")
+            {
+                comboBoxDemand.Tag = "active";
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void comboBoxSentence_Click(object sender, EventArgs e)
+        {
+            if(comboBoxDemand.Tag.ToString() != "active")
+            {
+                comboBoxSentence.Tag = "active";
+            }
+        }
+
+        private void comboBoxDemand_SelectedIndexChanged(object sender, EventArgs e)
         {
             var ctx = ClassGetContext.context;
 
-            int idSent = Convert.ToInt32(comboBoxSentence.SelectedValue);
-            int idDem = Convert.ToInt32(comboBoxDemand.SelectedValue);
+            if (comboBoxDemand.Tag.ToString() == "active")
+            {
+                int idDem = Convert.ToInt32(comboBoxDemand.SelectedValue);
+                var demand = ctx.Demands.Where(dm => dm.idDemand == idDem).FirstOrDefault();
 
-            var needObj = (from sent in ctx.Sentences
-                           join estate in ctx.EstateObjects on sent.idEstate equals estate.idEstate
-                           where sent.idSentence == idSent
-                           select new
-                           {
-                               estate,
-                               sent.price
-                           }).FirstOrDefault();
+                var sentence = (from sent in ctx.Sentences
+                                join estate in ctx.EstateObjects on sent.idEstate equals estate.idEstate
+                                select new
+                                {
+                                    estate,
+                                    sent
+                                })
+                                .ToList()
+                                .Where(st => Compare(demand, st.estate, st.sent.price) && ctx.Deals.Where(dl => dl.idSentence == st.sent.idSentence).Count() == 0).Select(st => st.sent)
+                                .ToList();
 
-            var demand = ctx.Demands.Where(dm => dm.idDemand == idDem).FirstOrDefault();
+                FillSentence(sentence);
+            }
+        }
 
-            MessageBox.Show(Compare(demand, needObj.estate, needObj.price).ToString());
+        private void comboBoxSentence_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var ctx = ClassGetContext.context;
+
+            if (comboBoxSentence.Tag.ToString() == "active")
+            {
+                int idSent = Convert.ToInt32(comboBoxSentence.SelectedValue);
+                var sentence = (from sent in ctx.Sentences
+                                join estate in ctx.EstateObjects on sent.idEstate equals estate.idEstate
+                                where sent.idSentence == idSent
+                                select new
+                                {
+                                    estate,
+                                    sent.price
+                                }).FirstOrDefault();
+
+                var demands = ctx.Demands.ToList()
+                    .Where(st => Compare(st, sentence.estate, sentence.price) && ctx.Deals.Where(dl => dl.idDemand == st.idDemand).Count() == 0).ToList();
+
+                FillDemand(demands);
+            }
         }
     }
 }
