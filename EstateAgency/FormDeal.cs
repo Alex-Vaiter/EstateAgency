@@ -210,5 +210,216 @@ namespace EstateAgency
 
             textBoxCompany.Text = summForCompany.ToString();
         }
+
+        private bool Compare(Demand demand, EstateObject estate, int priceEstate)
+        {
+            if (demand.typeEstate != estate.typeEstate)
+            {
+                return false;
+            }
+
+            if (!string.IsNullOrWhiteSpace(demand.city))
+            {
+                if (!string.IsNullOrWhiteSpace(estate.city))
+                {
+                    if (demand.city != estate.city)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(demand.street))
+            {
+                if (!string.IsNullOrWhiteSpace(estate.street))
+                {
+                    if (demand.street != estate.street)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(demand.house))
+            {
+                if (!string.IsNullOrWhiteSpace(estate.house))
+                {
+                    if (demand.house != estate.house)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(demand.apartment))
+            {
+                if (!string.IsNullOrWhiteSpace(estate.addressNumber))
+                {
+                    if (demand.apartment != estate.addressNumber)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            if (demand.latitude != null)
+            {
+                if (estate.latitude != null)
+                {
+                    if (demand.latitude != estate.latitude)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            if (demand.longitude != null)
+            {
+                if (estate.longitude != null)
+                {
+                    if (demand.longitude != estate.longitude)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            #region Проверка цены
+            if (demand.minPrice == null)
+                demand.minPrice = 0;
+
+            if (demand.maxPrice == null)
+                demand.maxPrice = priceEstate;
+
+            if (demand.minPrice > priceEstate || demand.maxPrice < priceEstate)
+                return false;
+            #endregion
+
+            #region Проверка площади
+            if (estate.totalArea == null)
+                estate.totalArea = 0;
+
+            if (demand.minArea == null)
+                demand.minArea = 0;
+
+            if (demand.maxArea == null)
+                demand.maxArea = estate.totalArea;
+
+            if (demand.minArea > estate.totalArea || demand.maxArea < estate.totalArea)
+                return false;
+            #endregion
+
+            switch (estate.typeEstate)
+            {
+                case "Квартира":
+                    {
+                        if(estate.floor == null)
+                            estate.floor = 0;
+
+                        if (demand.minFloor == null)
+                            demand.minFloor = 0;
+
+                        if (demand.maxFloor == null)
+                            demand.maxFloor = estate.floor;
+
+                        if (demand.minFloor > estate.floor || demand.maxFloor < estate.floor)
+                            return false;
+
+                        if (estate.rooms == null)
+                            estate.rooms = 1;
+
+                        if (demand.minTotalRooms == null)
+                            demand.minTotalRooms = 1;
+
+                        if (demand.maxTotalRooms == null)
+                            demand.maxTotalFloors = estate.floor;
+
+                        if (demand.minTotalRooms > estate.rooms || demand.maxTotalRooms < estate.rooms)
+                            return false;
+
+                        break;
+                    }
+                case "Дом":
+                    {
+                        if (estate.totalFloors == null)
+                            estate.totalFloors = 0;
+
+                        if (demand.minTotalFloors == null)
+                            demand.minTotalFloors = 0;
+
+                        if (demand.maxTotalFloors == null)
+                            demand.maxTotalFloors = estate.floor;
+
+                        if (demand.minTotalFloors > estate.rooms || demand.maxTotalFloors < estate.rooms)
+                            return false;
+
+                        if (estate.rooms == null)
+                            estate.rooms = 1;
+
+                        if (demand.minTotalRooms == null)
+                            demand.minTotalRooms = 1;
+
+                        if (demand.maxTotalRooms == null)
+                            demand.maxTotalFloors = estate.floor;
+
+                        if (demand.minTotalRooms > estate.rooms || demand.maxTotalRooms < estate.rooms)
+                            return false;
+
+                        break;
+                    }
+            }
+
+            return true;
+        }
+
+        private void comboBoxSentence_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var ctx = ClassGetContext.context;
+
+            int idSent = Convert.ToInt32(comboBoxSentence.SelectedValue);
+            int idDem = Convert.ToInt32(comboBoxDemand.SelectedValue);
+
+            var needObj = (from sent in ctx.Sentences
+                           join estate in ctx.EstateObjects on sent.idEstate equals estate.idEstate
+                           where sent.idSentence == idSent
+                           select new
+                           {
+                               estate,
+                               sent.price
+                           }).FirstOrDefault();
+
+            var demand = ctx.Demands.Where(dm => dm.idDemand == idDem).FirstOrDefault();
+
+            MessageBox.Show(Compare(demand, needObj.estate, needObj.price).ToString());
+        }
     }
 }

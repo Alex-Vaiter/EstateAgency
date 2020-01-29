@@ -28,11 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridViewDeals = new System.Windows.Forms.DataGridView();
+            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnIdDemand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnIdSentence = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSentence = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnClientDem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAgentDem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTypeEstate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnComissRieltSeller = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnComissRieltBuyer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxSentence = new System.Windows.Forms.ComboBox();
@@ -52,18 +64,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxCompany = new System.Windows.Forms.TextBox();
-            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnIdDemand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnIdSentence = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSentence = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnClientDem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAgentDem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTypeEstate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnComissRieltSeller = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnComissRieltBuyer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDeals)).BeginInit();
             this.SuspendLayout();
@@ -89,14 +90,14 @@
             this.dataGridViewDeals.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewDeals.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewDeals.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewDeals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDeals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewDeals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDeals.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnId,
@@ -111,29 +112,118 @@
             this.ColumnTypeEstate,
             this.ColumnComissRieltSeller,
             this.ColumnComissRieltBuyer});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewDeals.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewDeals.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewDeals.Location = new System.Drawing.Point(12, 112);
             this.dataGridViewDeals.Name = "dataGridViewDeals";
             this.dataGridViewDeals.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewDeals.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Roboto", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDeals.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewDeals.RowHeadersVisible = false;
             this.dataGridViewDeals.Size = new System.Drawing.Size(1192, 176);
             this.dataGridViewDeals.TabIndex = 21;
             this.dataGridViewDeals.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDeals_CellClick);
+            // 
+            // ColumnId
+            // 
+            this.ColumnId.HeaderText = "id";
+            this.ColumnId.Name = "ColumnId";
+            this.ColumnId.ReadOnly = true;
+            this.ColumnId.Visible = false;
+            // 
+            // ColumnIdDemand
+            // 
+            this.ColumnIdDemand.HeaderText = "demand";
+            this.ColumnIdDemand.Name = "ColumnIdDemand";
+            this.ColumnIdDemand.ReadOnly = true;
+            this.ColumnIdDemand.Visible = false;
+            // 
+            // ColumnIdSentence
+            // 
+            this.ColumnIdSentence.HeaderText = "sentence";
+            this.ColumnIdSentence.Name = "ColumnIdSentence";
+            this.ColumnIdSentence.ReadOnly = true;
+            this.ColumnIdSentence.Visible = false;
+            // 
+            // ColumnSentence
+            // 
+            this.ColumnSentence.FillWeight = 50.5298F;
+            this.ColumnSentence.HeaderText = "Предложение";
+            this.ColumnSentence.Name = "ColumnSentence";
+            this.ColumnSentence.ReadOnly = true;
+            // 
+            // ColumnPrice
+            // 
+            this.ColumnPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnPrice.FillWeight = 20.92247F;
+            this.ColumnPrice.HeaderText = "Цена недвижимости";
+            this.ColumnPrice.Name = "ColumnPrice";
+            this.ColumnPrice.ReadOnly = true;
+            // 
+            // ColumnClient
+            // 
+            this.ColumnClient.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnClient.FillWeight = 20.92247F;
+            this.ColumnClient.HeaderText = "Клиент-продавец";
+            this.ColumnClient.Name = "ColumnClient";
+            this.ColumnClient.ReadOnly = true;
+            // 
+            // ColumnAgent
+            // 
+            this.ColumnAgent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnAgent.FillWeight = 20.92247F;
+            this.ColumnAgent.HeaderText = "Риелтор продавца";
+            this.ColumnAgent.Name = "ColumnAgent";
+            this.ColumnAgent.ReadOnly = true;
+            // 
+            // ColumnClientDem
+            // 
+            this.ColumnClientDem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnClientDem.FillWeight = 20.92247F;
+            this.ColumnClientDem.HeaderText = "Клиент-покупатель";
+            this.ColumnClientDem.Name = "ColumnClientDem";
+            this.ColumnClientDem.ReadOnly = true;
+            // 
+            // ColumnAgentDem
+            // 
+            this.ColumnAgentDem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnAgentDem.FillWeight = 20.92247F;
+            this.ColumnAgentDem.HeaderText = "Риелтор покупателя";
+            this.ColumnAgentDem.Name = "ColumnAgentDem";
+            this.ColumnAgentDem.ReadOnly = true;
+            // 
+            // ColumnTypeEstate
+            // 
+            this.ColumnTypeEstate.HeaderText = "Тип недвижимости";
+            this.ColumnTypeEstate.Name = "ColumnTypeEstate";
+            this.ColumnTypeEstate.ReadOnly = true;
+            this.ColumnTypeEstate.Visible = false;
+            // 
+            // ColumnComissRieltSeller
+            // 
+            this.ColumnComissRieltSeller.HeaderText = "комиссия риелтора продавца";
+            this.ColumnComissRieltSeller.Name = "ColumnComissRieltSeller";
+            this.ColumnComissRieltSeller.ReadOnly = true;
+            this.ColumnComissRieltSeller.Visible = false;
+            // 
+            // ColumnComissRieltBuyer
+            // 
+            this.ColumnComissRieltBuyer.HeaderText = "комиссия релтора покупателя";
+            this.ColumnComissRieltBuyer.Name = "ColumnComissRieltBuyer";
+            this.ColumnComissRieltBuyer.ReadOnly = true;
+            this.ColumnComissRieltBuyer.Visible = false;
             // 
             // label1
             // 
@@ -165,6 +255,7 @@
             this.comboBoxSentence.Name = "comboBoxSentence";
             this.comboBoxSentence.Size = new System.Drawing.Size(1186, 23);
             this.comboBoxSentence.TabIndex = 75;
+            this.comboBoxSentence.SelectedIndexChanged += new System.EventHandler(this.comboBoxSentence_SelectedIndexChanged);
             // 
             // label12
             // 
@@ -341,94 +432,18 @@
             this.textBoxCompany.Size = new System.Drawing.Size(213, 24);
             this.textBoxCompany.TabIndex = 94;
             // 
-            // ColumnId
+            // button1
             // 
-            this.ColumnId.HeaderText = "id";
-            this.ColumnId.Name = "ColumnId";
-            this.ColumnId.ReadOnly = true;
-            this.ColumnId.Visible = false;
-            // 
-            // ColumnIdDemand
-            // 
-            this.ColumnIdDemand.HeaderText = "demand";
-            this.ColumnIdDemand.Name = "ColumnIdDemand";
-            this.ColumnIdDemand.ReadOnly = true;
-            this.ColumnIdDemand.Visible = false;
-            // 
-            // ColumnIdSentence
-            // 
-            this.ColumnIdSentence.HeaderText = "sentence";
-            this.ColumnIdSentence.Name = "ColumnIdSentence";
-            this.ColumnIdSentence.ReadOnly = true;
-            this.ColumnIdSentence.Visible = false;
-            // 
-            // ColumnSentence
-            // 
-            this.ColumnSentence.FillWeight = 50.5298F;
-            this.ColumnSentence.HeaderText = "Предложение";
-            this.ColumnSentence.Name = "ColumnSentence";
-            this.ColumnSentence.ReadOnly = true;
-            // 
-            // ColumnPrice
-            // 
-            this.ColumnPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnPrice.FillWeight = 20.92247F;
-            this.ColumnPrice.HeaderText = "Цена недвижимости";
-            this.ColumnPrice.Name = "ColumnPrice";
-            this.ColumnPrice.ReadOnly = true;
-            // 
-            // ColumnClient
-            // 
-            this.ColumnClient.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnClient.FillWeight = 20.92247F;
-            this.ColumnClient.HeaderText = "Клиент-продавец";
-            this.ColumnClient.Name = "ColumnClient";
-            this.ColumnClient.ReadOnly = true;
-            // 
-            // ColumnAgent
-            // 
-            this.ColumnAgent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnAgent.FillWeight = 20.92247F;
-            this.ColumnAgent.HeaderText = "Риелтор продавца";
-            this.ColumnAgent.Name = "ColumnAgent";
-            this.ColumnAgent.ReadOnly = true;
-            // 
-            // ColumnClientDem
-            // 
-            this.ColumnClientDem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnClientDem.FillWeight = 20.92247F;
-            this.ColumnClientDem.HeaderText = "Клиент-покупатель";
-            this.ColumnClientDem.Name = "ColumnClientDem";
-            this.ColumnClientDem.ReadOnly = true;
-            // 
-            // ColumnAgentDem
-            // 
-            this.ColumnAgentDem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColumnAgentDem.FillWeight = 20.92247F;
-            this.ColumnAgentDem.HeaderText = "Риелтор покупателя";
-            this.ColumnAgentDem.Name = "ColumnAgentDem";
-            this.ColumnAgentDem.ReadOnly = true;
-            // 
-            // ColumnTypeEstate
-            // 
-            this.ColumnTypeEstate.HeaderText = "Тип недвижимости";
-            this.ColumnTypeEstate.Name = "ColumnTypeEstate";
-            this.ColumnTypeEstate.ReadOnly = true;
-            this.ColumnTypeEstate.Visible = false;
-            // 
-            // ColumnComissRieltSeller
-            // 
-            this.ColumnComissRieltSeller.HeaderText = "комиссия риелтора продавца";
-            this.ColumnComissRieltSeller.Name = "ColumnComissRieltSeller";
-            this.ColumnComissRieltSeller.ReadOnly = true;
-            this.ColumnComissRieltSeller.Visible = false;
-            // 
-            // ColumnComissRieltBuyer
-            // 
-            this.ColumnComissRieltBuyer.HeaderText = "комиссия релтора покупателя";
-            this.ColumnComissRieltBuyer.Name = "ColumnComissRieltBuyer";
-            this.ColumnComissRieltBuyer.ReadOnly = true;
-            this.ColumnComissRieltBuyer.Visible = false;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.button1.Font = new System.Drawing.Font("Roboto", 10F);
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.button1.Location = new System.Drawing.Point(1126, 415);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(63, 26);
+            this.button1.TabIndex = 96;
+            this.button1.Text = "Удалить";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormDeal
             // 
@@ -436,6 +451,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1216, 576);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxCompany);
             this.Controls.Add(this.label6);
@@ -505,5 +521,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTypeEstate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnComissRieltSeller;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnComissRieltBuyer;
+        private System.Windows.Forms.Button button1;
     }
 }
