@@ -37,7 +37,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBoxFloor = new System.Windows.Forms.TextBox();
             this.textBoxApart = new System.Windows.Forms.TextBox();
             this.textBoxCity = new System.Windows.Forms.TextBox();
             this.textBoxHouse = new System.Windows.Forms.TextBox();
@@ -87,6 +86,7 @@
             this.buttonClear = new System.Windows.Forms.Button();
             this.numApartSearch = new System.Windows.Forms.NumericUpDown();
             this.numArea = new System.Windows.Forms.NumericUpDown();
+            this.numFloor = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEstates)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLatit)).BeginInit();
@@ -96,6 +96,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numApartSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numArea)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFloor)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonDel
@@ -161,15 +162,6 @@
             this.label2.Size = new System.Drawing.Size(128, 24);
             this.label2.TabIndex = 29;
             this.label2.Text = "Город";
-            // 
-            // textBoxFloor
-            // 
-            this.textBoxFloor.Font = new System.Drawing.Font("Roboto", 14F);
-            this.textBoxFloor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.textBoxFloor.Location = new System.Drawing.Point(216, 543);
-            this.textBoxFloor.Name = "textBoxFloor";
-            this.textBoxFloor.Size = new System.Drawing.Size(163, 30);
-            this.textBoxFloor.TabIndex = 23;
             // 
             // textBoxApart
             // 
@@ -718,12 +710,21 @@
             this.numArea.Size = new System.Drawing.Size(92, 30);
             this.numArea.TabIndex = 60;
             // 
+            // numFloor
+            // 
+            this.numFloor.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.numFloor.Location = new System.Drawing.Point(216, 542);
+            this.numFloor.Name = "numFloor";
+            this.numFloor.Size = new System.Drawing.Size(163, 30);
+            this.numFloor.TabIndex = 61;
+            // 
             // FormEstateObject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1233, 586);
+            this.Controls.Add(this.numFloor);
             this.Controls.Add(this.numArea);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.numTotalRooms);
@@ -747,7 +748,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBoxFloor);
             this.Controls.Add(this.textBoxApart);
             this.Controls.Add(this.textBoxCity);
             this.Controls.Add(this.textBoxHouse);
@@ -775,6 +775,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numApartSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numArea)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numFloor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -788,7 +789,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBoxFloor;
         private System.Windows.Forms.TextBox textBoxApart;
         private System.Windows.Forms.TextBox textBoxCity;
         private System.Windows.Forms.TextBox textBoxHouse;
@@ -838,5 +838,6 @@
         private System.Windows.Forms.NumericUpDown numArea;
         private System.Windows.Forms.NumericUpDown numApartSearch;
         private System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.NumericUpDown numFloor;
     }
 }

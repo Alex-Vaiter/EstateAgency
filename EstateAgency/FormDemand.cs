@@ -50,16 +50,16 @@ namespace EstateAgency
             currDemand.apartment =      textBoxApart.Text;
             currDemand.latitude =       numLatit.Value;
             currDemand.longitude =      numLongit.Value;
-            currDemand.minPrice =       (int)numMinPrice.Value;
-            currDemand.maxPrice =       (int)numMaxPrice.Value;
-            currDemand.minArea =        numMinArea.Value;
-            currDemand.maxArea =        numMaxArea.Value;
-            currDemand.minTotalFloors = (int)numMinTotalFloors.Value;
-            currDemand.maxTotalFloors = (int)numMaxTotalFloors.Value;
-            currDemand.minFloor =       (int)numMinFloor.Value;
-            currDemand.maxFloor =       (int)numMaxFloor.Value;
-            currDemand.minTotalRooms =  (int)numMinTotalRooms.Value;
-            currDemand.maxTotalRooms =  (int)numMaxTotalRooms.Value;
+            currDemand.minPrice =       IntToNull(numMinPrice.Value);
+            currDemand.maxPrice =       IntToNull(numMaxPrice.Value);
+            currDemand.minArea =        DecimalToNull(numMinArea.Value);
+            currDemand.maxArea =        DecimalToNull(numMaxArea.Value);
+            currDemand.minTotalFloors = IntToNull(numMinTotalFloors.Value);
+            currDemand.maxTotalFloors = IntToNull(numMaxTotalFloors.Value);
+            currDemand.minFloor =       IntToNull(numMinFloor.Value);
+            currDemand.maxFloor =       IntToNull(numMaxFloor.Value);
+            currDemand.minTotalRooms =  IntToNull(numMinTotalRooms.Value);
+            currDemand.maxTotalRooms =  IntToNull(numMaxTotalRooms.Value);
 
             try
             {
@@ -113,16 +113,16 @@ namespace EstateAgency
             currDemand.apartment =      textBoxApart.Text;
             currDemand.latitude =       numLatit.Value;
             currDemand.longitude =      numLongit.Value;
-            currDemand.minPrice =       (int)numMinPrice.Value;
-            currDemand.maxPrice =       (int)numMaxPrice.Value;
-            currDemand.minArea =        numMinArea.Value;
-            currDemand.maxArea =        numMaxArea.Value;
-            currDemand.minTotalFloors = (int)numMinTotalFloors.Value;
-            currDemand.maxTotalFloors = (int)numMaxTotalFloors.Value;
-            currDemand.minFloor =       (int)numMinFloor.Value;
-            currDemand.maxFloor =       (int)numMaxFloor.Value;
-            currDemand.minTotalRooms =  (int)numMinTotalRooms.Value;
-            currDemand.maxTotalRooms =  (int)numMaxTotalRooms.Value;
+            currDemand.minPrice =       IntToNull(numMinPrice.Value);
+            currDemand.maxPrice =       IntToNull(numMaxPrice.Value);
+            currDemand.minArea =        DecimalToNull(numMinArea.Value);
+            currDemand.maxArea =        DecimalToNull(numMaxArea.Value);
+            currDemand.minTotalFloors = IntToNull(numMinTotalFloors.Value);
+            currDemand.maxTotalFloors = IntToNull(numMaxTotalFloors.Value);
+            currDemand.minFloor =       IntToNull(numMinFloor.Value);
+            currDemand.maxFloor =       IntToNull(numMaxFloor.Value);
+            currDemand.minTotalRooms =  IntToNull(numMinTotalRooms.Value);
+            currDemand.maxTotalRooms =  IntToNull(numMaxTotalRooms.Value);
 
             try
             {
@@ -295,5 +295,22 @@ namespace EstateAgency
             else
                 return Convert.ToDecimal(item);
         }
+
+        private int? IntToNull(decimal item)
+        {
+            if (item == 0)
+                return null;
+            else
+                return Convert.ToInt32(item);
+        }
+
+        private decimal? DecimalToNull(decimal item)
+        {
+            if (item == 0)
+                return null;
+            else
+                return Convert.ToDecimal(item);
+        }
+
     }
 }

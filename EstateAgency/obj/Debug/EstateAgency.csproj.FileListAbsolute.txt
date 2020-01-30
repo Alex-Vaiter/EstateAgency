@@ -24,3 +24,29 @@ D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Deb
 D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormSentence.resources
 D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormDemand.resources
 D:\Cессии по ms-sql\Задание 2019\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormDeal.resources
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\bin\Debug\EstateAgency.exe.config
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\bin\Debug\EstateAgency.exe
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\bin\Debug\EstateAgency.pdb
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\bin\Debug\EntityFramework.dll
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\bin\Debug\EntityFramework.SqlServer.dll
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\bin\Debug\Fizzler.dll
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\bin\Debug\Svg.dll
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\bin\Debug\EntityFramework.xml
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\bin\Debug\EntityFramework.SqlServer.xml
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\bin\Debug\Svg.xml
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\bin\Debug\ru\EntityFramework.resources.dll
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\obj\Debug\EstateAgency.csprojAssemblyReference.cache
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormAgents.resources
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormClients.resources
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormDeal.resources
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormEstateObject.resources
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormMain.resources
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormMessage.resources
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormSentence.resources
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\obj\Debug\EstateAgency.FormDemand.resources
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\obj\Debug\EstateAgency.Properties.Resources.resources
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\obj\Debug\EstateAgency.csproj.GenerateResource.cache
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\obj\Debug\EstateAgency.csproj.CopyComplete
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\obj\Debug\EstateAgency.exe
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\obj\Debug\EstateAgency.pdb
