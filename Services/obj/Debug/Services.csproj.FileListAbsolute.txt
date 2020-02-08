@@ -1,0 +1,5 @@
+D:\ChampionShipLearn\2019Task\EstateAgency\Services\bin\Debug\Services.dll
+D:\ChampionShipLearn\2019Task\EstateAgency\Services\bin\Debug\Services.pdb
+D:\ChampionShipLearn\2019Task\EstateAgency\Services\obj\Debug\Services.csprojAssemblyReference.cache
+D:\ChampionShipLearn\2019Task\EstateAgency\Services\obj\Debug\Services.dll
+D:\ChampionShipLearn\2019Task\EstateAgency\Services\obj\Debug\Services.pdb

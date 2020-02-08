@@ -50,3 +50,5 @@ D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\obj\Debug\EstateAgency.c
 D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\obj\Debug\EstateAgency.csproj.CopyComplete
 D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\obj\Debug\EstateAgency.exe
 D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\obj\Debug\EstateAgency.pdb
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\bin\Debug\Services.dll
+D:\ChampionShipLearn\2019Task\EstateAgency\EstateAgency\bin\Debug\Services.pdb

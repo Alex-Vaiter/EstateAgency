@@ -1,5 +1,6 @@
 ﻿using EstateAgency.BaseLogic;
 using EstateAgency.Models;
+using Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -189,18 +190,18 @@ namespace EstateAgency
                 var ctx = ClassGetContext.context;
                 estateObject = new EstateObject
                 {
-                    idEstate =      idEstate,
-                    city =          textBoxCity.Text,
-                    street =        textBoxStreet.Text,
-                    house =         textBoxHouse.Text,
+                    idEstate = idEstate,
+                    city = textBoxCity.Text,
+                    street = textBoxStreet.Text,
+                    house = textBoxHouse.Text,
                     addressNumber = textBoxApart.Text,
-                    floor =         IntToNull(numFloor.Value),
-                    totalArea =     DecimalToNull(numArea.Value),
-                    totalFloors =   IntToNull(numTotalFloor.Value),
-                    rooms =         IntToNull(numTotalRooms.Value),
-                    longitude =     DecimalToNull(numLongit.Value),
-                    latitude =      DecimalToNull(numLatit.Value),
-                    typeEstate =    comboBoxEstateEdit.Text,
+                    floor = IntToNull(numFloor.Value),
+                    totalArea = DecimalToNull(numArea.Value),
+                    totalFloors = IntToNull(numTotalFloor.Value),
+                    rooms = IntToNull(numTotalRooms.Value),
+                    longitude = DecimalToNull(numLongit.Value),
+                    latitude = DecimalToNull(numLatit.Value),
+                    typeEstate = comboBoxEstateEdit.Text,
                 };
 
                 ctx.EstateObjects.Add(estateObject);
@@ -226,17 +227,17 @@ namespace EstateAgency
                 var ctx = ClassGetContext.context;
                 var curEst = ctx.EstateObjects.Where(es => es.idEstate == estateObject.idEstate).FirstOrDefault();
 
-                curEst.city =          textBoxCity.Text;
-                curEst.street =        textBoxStreet.Text;
-                curEst.house =         textBoxHouse.Text;
+                curEst.city = textBoxCity.Text;
+                curEst.street = textBoxStreet.Text;
+                curEst.house = textBoxHouse.Text;
                 curEst.addressNumber = textBoxApart.Text;
-                curEst.floor =         IntToNull(numFloor.Value);
-                curEst.totalArea =     DecimalToNull(numArea.Value);
-                curEst.totalFloors =   IntToNull(numTotalFloor.Value);
-                curEst.rooms =         IntToNull(numTotalRooms.Value);
-                curEst.longitude =     DecimalToNull(numLongit.Value);
-                curEst.latitude =      DecimalToNull(numLatit.Value);
-                curEst.typeEstate =    comboBoxEstateEdit.Text;
+                curEst.floor = IntToNull(numFloor.Value);
+                curEst.totalArea = DecimalToNull(numArea.Value);
+                curEst.totalFloors = IntToNull(numTotalFloor.Value);
+                curEst.rooms = IntToNull(numTotalRooms.Value);
+                curEst.longitude = DecimalToNull(numLongit.Value);
+                curEst.latitude = DecimalToNull(numLatit.Value);
+                curEst.typeEstate = comboBoxEstateEdit.Text;
 
                 ctx.SaveChanges();
                 FillComboBox();
@@ -260,33 +261,33 @@ namespace EstateAgency
         {
             try
             {
-            var ctx = ClassGetContext.context;
-            var isLock = (from estate in ctx.EstateObjects
-                          join sent in ctx.Sentences on estate.idEstate equals sent.idEstate
-                          where estate.idEstate == estateObject.idEstate
-                          select estate);
+                var ctx = ClassGetContext.context;
+                var isLock = (from estate in ctx.EstateObjects
+                              join sent in ctx.Sentences on estate.idEstate equals sent.idEstate
+                              where estate.idEstate == estateObject.idEstate
+                              select estate);
 
-            if (isLock.Any())
-            {
-                FormMessage form = new FormMessage("Эта недвижимость учавствует в Предложении", ChangePic.error);
-                form.ShowDialog();
-            }
-            else
-            {
-                var delet = ctx.EstateObjects.Where(es => es.idEstate == estateObject.idEstate).FirstOrDefault();
-                ctx.EstateObjects.Remove(delet);
-                ctx.SaveChanges();
-
-                comboBoxEstateEdit.Text = "";
-                comboBoxEstateType.SelectedIndex = 0;
-
-                using (var form = new FormMessage("Недвижимость удалена", ChangePic.success))
+                if (isLock.Any())
+                {
+                    FormMessage form = new FormMessage("Эта недвижимость учавствует в Предложении", ChangePic.error);
                     form.ShowDialog();
+                }
+                else
+                {
+                    var delet = ctx.EstateObjects.Where(es => es.idEstate == estateObject.idEstate).FirstOrDefault();
+                    ctx.EstateObjects.Remove(delet);
+                    ctx.SaveChanges();
 
-                BoxesVision(false, false, false, false, false, false, false, false, false, false);
-                FillTable(ctx.EstateObjects.ToList());
-                FillComboBox();
-            }
+                    comboBoxEstateEdit.Text = "";
+                    comboBoxEstateType.SelectedIndex = 0;
+
+                    using (var form = new FormMessage("Недвижимость удалена", ChangePic.success))
+                        form.ShowDialog();
+
+                    BoxesVision(false, false, false, false, false, false, false, false, false, false);
+                    FillTable(ctx.EstateObjects.ToList());
+                    FillComboBox();
+                }
             }
             catch
             {
@@ -299,17 +300,17 @@ namespace EstateAgency
         {
             try
             {
-            var result = (from estate in ClassGetContext.context.EstateObjects select estate).ToList();
+                var result = (from estate in ClassGetContext.context.EstateObjects select estate).ToList();
 
-            result = result.Where(est =>
-                            Levenchtein.Length(est.city, textBoxCitySearch.Text) <= 3 &&
-                            Levenchtein.Length(est.street, textBoxStreetSearch.Text) <= 3 &&
-                            Levenchtein.Length(est.house, textBoxHouseSearch.Text) <= 1 &&
-                            Levenchtein.Length(est.addressNumber, numApartSearch.Value.ToString()) <= 1)
-                           .Select(es => es)
-                           .ToList();
+                result = result.Where(est =>
+                                Levenchtein.Length(est.city, textBoxCitySearch.Text) <= 3 &&
+                                Levenchtein.Length(est.street, textBoxStreetSearch.Text) <= 3 &&
+                                Levenchtein.Length(est.house, textBoxHouseSearch.Text) <= 1 &&
+                                Levenchtein.Length(est.addressNumber, numApartSearch.Value.ToString()) <= 1)
+                               .Select(es => es)
+                               .ToList();
 
-            FillTable(result);
+                FillTable(result);
             }
             catch
             {
@@ -326,7 +327,7 @@ namespace EstateAgency
             numApartSearch.Value = 0;
             try
             {
-            FillTable(ClassGetContext.context.EstateObjects.ToList());
+                FillTable(ClassGetContext.context.EstateObjects.ToList());
             }
             catch
             {

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace EstateAgency.BaseLogic
+namespace Services
 {
-    class Levenchtein
+    public class Levenchtein
     {
         /// <summary>
         /// Возвращает расстояние Левенштейна между двумя словами. 
